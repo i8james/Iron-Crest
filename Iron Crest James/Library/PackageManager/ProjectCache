@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638113165239812857
-    m_Hash: 3456422398
+      ticks: 638114900507526172
+    m_Hash: 2509920740
   m_LockFileStatus:
     m_FilePath: C:/Users/colljam24/Documents/GitHub/Iron-Crest/Iron Crest James/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638113167061365844
-    m_Hash: 1128484825
+      ticks: 638114900508284231
+    m_Hash: 388269716
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,79 @@ m_LocalPackages:
 m_ProjectPath: C:/Users/colljam24/Documents/GitHub/Iron-Crest/Iron Crest James/Packages
 m_EditorVersion: 2022.1.3f1 (1cedbfe38737)
 m_ResolvedPackages:
+- packageId: com.unity.cinemachine@2.8.4
+  testable: 0
+  isDirectDependency: 1
+  version: 2.8.4
+  source: 1
+  resolvedPath: C:\Users\colljam24\Documents\GitHub\Iron-Crest\Iron Crest James\Library\PackageCache\com.unity.cinemachine@2.8.4
+  assetPath: Packages/com.unity.cinemachine
+  name: com.unity.cinemachine
+  displayName: Cinemachine
+  author:
+    name: 
+    email: 
+    url: 
+  category: cinematography
+  type: 
+  description: "Smart camera tools for passionate creators. \n\nNew starting from
+    2.7.1: Are you looking for the Cinemachine menu? It has moved to the GameObject
+    menu.\n\nIMPORTANT NOTE: If you are upgrading from the legacy Asset Store version
+    of Cinemachine, delete the Cinemachine asset from your project BEFORE installing
+    this version from the Package Manager."
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 2.8.4
+    compatible:
+    - 2.8.4
+    verified: 2.8.4
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - camera
+  - follow
+  - rig
+  - fps
+  - cinematography
+  - aim
+  - orbit
+  - cutscene
+  - cinematic
+  - collision
+  - freelook
+  - cinemachine
+  - compose
+  - composition
+  - dolly
+  - track
+  - clearshot
+  - noise
+  - framing
+  - handheld
+  - lens
+  - impulse
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/com.unity.cinemachine.git
+    revision: 15a386e047f93d18479f6ae075bd3dcc985d3c34
+    path: 
+  unityLifecycle:
+    version: 2.8.4
+    nextVersion: 2.9.0-pre.6
 - packageId: com.unity.collab-proxy@1.15.17
   testable: 0
   isDirectDependency: 1
