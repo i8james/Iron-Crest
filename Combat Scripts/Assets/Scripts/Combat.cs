@@ -3,28 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public class Combat : MonoBehaviour
+public class Combat : MonoBehaviour
 {
-
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            combat(GameObject.Find("Cube"), GameObject.Find("Enemy"));
+        }
+    }
     public void combat(GameObject attacker, GameObject defender)
     {
-        if (CalculateHit(attacker.hRate, defender.ac))
+        Unit unit = attacker.GetComponent<Unit>();
+        Enemy target = defender.GetComponent<Enemy>();
+        if (CalculateHit(target.ac))
         {
-            if (Random(0, 100) <= attacker.crit)
+            if (UnityEngine.Random.Range(0, 100) <= unit.crit)
             {
-                defender.health -= Damage(attacker.attack, defender.defense) * 3;
+                target.health -= Damage(unit.attack, target.defense) * 3;
             }
             else
             {
-                defender.health -= Damage(attacker.attack, defender.defense);
+                target.health -= Damage(unit.attack, target.defense);
             }
         }
     }
 
-    public bool CalculateHit(int hRate, int dodge)
+    public bool CalculateHit(int dodge)
     {
-        int rint = Random(0, 100);
-        if (rint <= hRate - dodge)
+        int rint = UnityEngine.Random.Range(0, 100);
+        if (rint <= 100 - dodge)
         {
             return true;
         }
@@ -34,14 +42,11 @@ using UnityEngine;
         }
     }
 
-    private int Random(int v1, int v2)
-    {
-        throw new NotImplementedException();
-    }
 
     public int Damage(int attack, int defense)
     {
         return (attack - defense);
     }
+
 }
-*/
+

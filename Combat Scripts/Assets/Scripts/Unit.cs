@@ -12,13 +12,17 @@ public class Unit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        health = 10;
+        attack = 10;
+        defense = 2;
+        ac = 20;
+        crit = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void heal()
