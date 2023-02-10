@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour
     public int defense;
     public int ac;
     public int crit;
+    public bool acted;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class Unit : MonoBehaviour
         defense = 2;
         ac = 20;
         crit = 10;
+        acted = false;
     }
 
     // Update is called once per frame
