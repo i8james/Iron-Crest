@@ -12,6 +12,8 @@ public class UnitMovement : MonoBehaviour
     [SerializeField]
     float movespeed = 5;
 
+    int moveRange;
+
     public bool movement = false;
     
     // Start is called before the first frame update

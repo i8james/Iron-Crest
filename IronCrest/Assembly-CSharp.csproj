@@ -60,6 +60,7 @@
     <Compile Include="Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\UnitMovement.cs" />
     <Compile Include="Assets\GridStats.cs" />
+    <Compile Include="Assets\GridBehaviorEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

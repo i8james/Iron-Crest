@@ -11,7 +11,9 @@ public class GridBehavior : MonoBehaviour
     public GameObject gridPrefab;
     public Vector3 leftBottomLocation = new Vector3(0,0,0);
 
-    public GameObject[,] gridArray;
+    
+    private GameObject[,] gridArray;
+    public GameObject[,] gridArrayF;
 
     //Starting position:
     public int startX = 0;
@@ -27,11 +29,17 @@ public class GridBehavior : MonoBehaviour
 
     private void Awake()
     {
+        gridArrayF = gridArray;
+    }
+
+    public void CreateGrid()
+    {
         gridArray = new GameObject[columns, rows];
-        if(gridPrefab)
+        if (gridPrefab)
         {
             GenerateGrid();
-        } else
+        }
+        else
         {
             print("Missing Grid Prefab!");
         }
@@ -154,9 +162,11 @@ public class GridBehavior : MonoBehaviour
 
     void InitialSetup()
     {
-        foreach(GameObject obj in gridArray)
+        foreach(GameObject obj in gridArray)    
         {
-            obj.GetComponent<GridStats>().visited = -1;
+            if (obj != null) {
+                obj.GetComponent<GridStats>().visited = -1;
+            }
         }
         gridArray[startX, startY].GetComponent<GridStats>().visited = 0;
     }
@@ -167,7 +177,7 @@ public class GridBehavior : MonoBehaviour
         switch(direction)
         {
             case 1:
-                if(y+1<rows && gridArray[x,y+1] && gridArray[x,y+1].GetComponent<GridStats>().visited == step)
+                if(y+1<rows && gridArray[x,y+1] != null && gridArray[x,y+1].GetComponent<GridStats>().visited == step)
                 {
                     return true;
                 } else
@@ -175,7 +185,7 @@ public class GridBehavior : MonoBehaviour
                     return false;
                 }
             case 2:
-                if (x + 1 < columns && gridArray[x + 1, y] && gridArray[x + 1, y].GetComponent<GridStats>().visited == step)
+                if (x + 1 < columns && gridArray[x + 1, y] != null && gridArray[x + 1, y].GetComponent<GridStats>().visited == step)
                 {
                     return true;
                 }
@@ -184,7 +194,7 @@ public class GridBehavior : MonoBehaviour
                     return false;
                 }
             case 3:
-                if (y - 1 > -1 && gridArray[x, y - 1] && gridArray[x, y - 1].GetComponent<GridStats>().visited == step)
+                if (y - 1 > -1 && gridArray[x, y - 1] != null && gridArray[x, y - 1].GetComponent<GridStats>().visited == step)
                 {
                     return true;
                 }
@@ -193,7 +203,7 @@ public class GridBehavior : MonoBehaviour
                     return false;
                 }
             case 4:
-                if (x - 1 > -1 && gridArray[x - 1, y] && gridArray[x - 1, y].GetComponent<GridStats>().visited == step)
+                if (x - 1 > -1 && gridArray[x - 1, y] != null && gridArray[x - 1, y].GetComponent<GridStats>().visited == step)
                 {
                     return true;
                 }
