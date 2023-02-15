@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TurnChange : MonoBehaviour
 {
-    /*public List<Unit> playerUnits;
+    public List<Unit> playerUnits;
     public List<Enemy> enemyUnits;
     int turn;
+    string victory;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,15 @@ public class TurnChange : MonoBehaviour
     {
         if ((ActionsUsed(playerUnits) == false) && (turn == 1))
         {
-            ChangeTurn("enemy");
+            ChangeTurn();
+        }
+        if ((enemyUnits.Count == 0) && (victory == "Rout"))
+        {
+            EndGame("Victory");
+        }
+        if (playerUnits.Count == 0)
+        {
+            EndGame("Defeat");
         }
     }
 
@@ -35,5 +44,28 @@ public class TurnChange : MonoBehaviour
         }
         return remainingAction;
     }
-    */
+    
+    void ChangeTurn()
+    {
+       if (turn == 1)
+       {
+            turn--;
+       }
+       if (turn == 0)
+       {
+            turn++;
+       }
+    }
+
+    void EndGame(string endType)
+    {
+        if (endType == "Victory")
+        {
+
+        }
+        if (endType == "Defeat")
+        {
+
+        }
+    }
 }

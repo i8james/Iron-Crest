@@ -9,6 +9,7 @@ public class Unit : MonoBehaviour
     public int defense;
     public int ac;
     public int crit;
+    public int move;
     public bool acted;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class Unit : MonoBehaviour
         defense = torso.defense;
         ac = torso.ac + legs.ac;
         crit = head.crit;
+        move = legs.move;
         acted = false;
     }
 
