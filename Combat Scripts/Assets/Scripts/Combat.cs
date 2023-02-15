@@ -9,7 +9,7 @@ public class Combat : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            combat(GameObject.Find("Cube"), GameObject.Find("Enemy"));
+            combat(GameObject.Find("Player"), GameObject.Find("Enemy"));
         }
     }
     public void combat(GameObject attacker, GameObject defender)
@@ -25,6 +25,10 @@ public class Combat : MonoBehaviour
             else
             {
                 target.health -= Damage(unit.attack, target.defense);
+            }
+            if (target.health <= 0)
+            {
+                target.death();
             }
         }
     }

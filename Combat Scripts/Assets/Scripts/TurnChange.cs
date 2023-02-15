@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnChange : MonoBehaviour
 {
-    public List<Unit> playerUnits;
+    /*public List<Unit> playerUnits;
     public List<Enemy> enemyUnits;
     int turn;
     // Start is called before the first frame update
@@ -35,4 +35,5 @@ public class TurnChange : MonoBehaviour
         }
         return remainingAction;
     }
+    */
 }

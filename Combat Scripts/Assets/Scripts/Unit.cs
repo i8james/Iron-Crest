@@ -13,11 +13,14 @@ public class Unit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 10;
-        attack = 10;
-        defense = 2;
-        ac = 20;
-        crit = 10;
+        Torso torso = GetComponentInChildren<Torso>();
+        Legs legs = GetComponentInChildren<Legs>();
+        Head head = GetComponentInChildren<Head>();
+        health = torso.health;
+        attack = torso.attack;
+        defense = torso.defense;
+        ac = torso.ac + legs.ac;
+        crit = head.crit;
         acted = false;
     }
 
