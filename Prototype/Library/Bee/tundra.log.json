@@ -385,6 +385,7 @@
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Unity.CollabProxy.Editor.dll (+2 others)","enqueuedNodeIndex":299,"enqueueingNodeAnnotation":"CopyFiles Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll","enqueueingNodeIndex":385}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"WriteText Library/Bee/artifacts/1900b0aE.dag/Unity.CollabProxy.Editor.rsp","enqueuedNodeIndex":298,"enqueueingNodeAnnotation":"Csc Library/Bee/artifacts/1900b0aE.dag/Unity.CollabProxy.Editor.dll (+2 others)","enqueueingNodeIndex":299}
 {"msg":"enqueueNode","enqueuedNodeAnnotation":"CopyFiles Library/ScriptAssemblies/Unity.CollabProxy.Editor.pdb","enqueuedNodeIndex":386,"enqueueingNodeAnnotation":"ScriptAssemblies","enqueueingNodeIndex":4}
+<<<<<<< Updated upstream
 {"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp","index":282}
 {"msg":"newNode","annotation":"WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm.rsp","index":296}
 {"msg":"runNodeAction","annotation":"WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp","index":282}
@@ -436,3 +437,5 @@
 {"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll","index":383}
 {"msg":"noderesult","processed_node_count":383,"number_of_nodes_ever_queued":386,"annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll","index":383,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Assembly-CSharp.dll"}
 {"msg":"noderesult","processed_node_count":384,"number_of_nodes_ever_queued":386,"annotation":"MovedFromExtractorCombine Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm","index":297,"exitcode":0,"outputfile":"Library\\Bee\\artifacts\\1900b0aE.dag\\Assembly-CSharp.dll.mvfrm"}
+=======
+>>>>>>> Stashed changes
