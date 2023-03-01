@@ -370,6 +370,8 @@
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/Head.cs"
 "Assets/Scripts/Legs.cs"
+"Assets/Scripts/sceneManager.cs"
+"Assets/Scripts/sceneName.cs"
 "Assets/Scripts/Torso.cs"
 "Assets/Scripts/TurnChange.cs"
 "Assets/Scripts/Unit.cs"

@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638131297878964645
+      ticks: 638133062699941876
     m_Hash: 1598079691
   m_LockFileStatus:
     m_FilePath: C:/Users/colljam24/Documents/GitHub/Iron-Crest/Prototype/Packages/packages-lock.json
@@ -13,8 +13,8 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638131304565075318
-    m_Hash: 1128484825
+      ticks: 638133062699951334
+    m_Hash: 3553076896
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -3142,6 +3142,7 @@ m_ResolvedPackages:
     - 1.6.0
     - 1.7.0
     - 1.7.1
+    - 1.8.1
     compatible:
     - 1.4.0
     - 1.4.1
@@ -3151,6 +3152,7 @@ m_ResolvedPackages:
     - 1.6.0
     - 1.7.0
     - 1.7.1
+    - 1.8.1
     verified: 1.4.3
   dependencies:
   - name: com.unity.modules.unitywebrequest
