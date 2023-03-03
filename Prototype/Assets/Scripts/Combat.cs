@@ -9,12 +9,12 @@ public class Combat : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            combat(GameObject.Find("Player"), GameObject.Find("Enemy"));
+            attack(GameObject.Find("Enemy"));
         }
     }
-    public void combat(GameObject attacker, GameObject defender)
+    public void attack(GameObject defender)
     {
-        Unit unit = attacker.GetComponent<Unit>();
+        Unit unit = GameObject.Find("Player").GetComponent<Unit>();
         Enemy target = defender.GetComponent<Enemy>();
         if (CalculateHit(target.ac))
         {

@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638133062699941876
+      ticks: 638134760037663407
     m_Hash: 1598079691
   m_LockFileStatus:
     m_FilePath: C:/Users/colljam24/Documents/GitHub/Iron-Crest/Prototype/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638133062699951334
+      ticks: 638134760037673720
     m_Hash: 3553076896
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
