@@ -8,8 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public bool isStart;
-    public bool isQuit;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +16,10 @@ public class MainMenu : MonoBehaviour
     //Determines what type of button it is when clicked
     public void LoadScene(string sceneName)
     {
-        LoadScene(sceneName);
+        Debug.Log("Loading" + sceneName);
+        SceneManager.LoadScene(sceneName);
     }
-
+    //Will quit the program if is opened as an application.
     public void Quit()
     {
         Application.Quit();
@@ -29,6 +28,6 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
