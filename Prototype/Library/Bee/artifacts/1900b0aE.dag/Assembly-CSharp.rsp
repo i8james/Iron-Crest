@@ -368,7 +368,6 @@
 "Assets/NewBehaviourScript.cs"
 "Assets/Robot Pieces/Shmovin.cs"
 "Assets/Scripts/CameraController.cs"
-"Assets/Scripts/Character.cs"
 "Assets/Scripts/Combat.cs"
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/Head.cs"

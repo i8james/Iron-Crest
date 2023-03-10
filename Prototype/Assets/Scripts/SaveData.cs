@@ -16,17 +16,23 @@ public class SaveData : MonoBehaviour
 [System.Serializable]
 public class PlayersUnitData
 {
+    //Players name and in game currency trackers
+    public string playerName;
+    public int gold;
     //Creates all of the data for the units in the game
     public List<Units> Units = new List<Units>();
 }
 [System.Serializable]
 public class Units
 {
-    public string name;
-
+    public string unitName;
+    public GameObject unitsModel;
     //Unit stats from the Unit script
-    public int health;
-    public int attack;
+    public int currentHealth;
+    public int maximumHealth;
+    public GameObject equippedWeapon;
+    public int attackPower;
+    public int attackRange;
     public int defense;
     public int ac;
     public int crit;
