@@ -362,10 +362,11 @@
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/Head.cs"
 "Assets/Scripts/Legs.cs"
-"Assets/Scripts/TargetList.cs"
 "Assets/Scripts/Torso.cs"
 "Assets/Scripts/TurnChange.cs"
 "Assets/Scripts/Unit.cs"
+"Assets/Scripts/Units.cs"
+"Assets/Scripts/Weapon.cs"
 -langversion:9.0
 
 /deterministic
