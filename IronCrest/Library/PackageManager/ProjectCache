@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638120945440175403
-    m_Hash: 181372056
+      ticks: 638122667595329232
+    m_Hash: 1450219688
   m_LockFileStatus:
     m_FilePath: C:/Users/flinjus23/OneDrive/Documents/Iron-Crest/IronCrest/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638120945442192917
-    m_Hash: 2959799995
+      ticks: 638122667595487977
+    m_Hash: 2728377120
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -855,6 +855,7 @@ m_ResolvedPackages:
     - 3.2.0-pre.3
     - 3.2.0-pre.4
     - 4.0.0-pre.1
+    - 4.0.0-pre.2
     compatible:
     - 3.0.6
     - 3.2.0-pre.1
