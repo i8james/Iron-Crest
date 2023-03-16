@@ -1,0 +1,9 @@
+Main Features:
+Turn Based Movement
+Turn Based Combat
+Map Generation
+Action Menus
+Start Screen
+Mech Stats
+Unique Features:
+Mech Customization/Modular Mechs
