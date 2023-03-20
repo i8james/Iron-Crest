@@ -1,26 +1,9 @@
 Main Features:
-	Turn Based Movement
-	Turn Based Combat
-		Weapon Ranks
-			Character Classes and Archetypes
-				Support role (Stretch goal)
-			Character Skills (Stretch goals)
-				Better stat growths with mechs with a more specialized role/class.
-		Retaliation attacks
-		Choosing attacks (multiple weapons)
-	Map Generation
-	Action Menus (Basic)
-	Start Screen/End Screen
-	Mech Stats effected by items equipped
-	heatlh bar/Unit UI
-	Map Selection
-	XP and Character leveling
-	Item progression
-	Camera
-		Camera controls with wasd + Mouse
-		Camera moves to next available unit
-		Camera pans to show attack.
-
+Turn Based Movement
+Turn Based Combat
+Map Generation
+Action Menus
+Start Screen
+Mech Stats
 Unique Features:
-	Mech Customization/Modular Mechs
-	Shop
+Mech Customization/Modular Mechs
