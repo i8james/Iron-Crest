@@ -28,7 +28,7 @@ public class Units
     public string unitName;
     public GameObject unitsModel;
     //Unit stats from the Unit script
-    public int currentHealth;
+    public int health;
     public int maximumHealth;
     public GameObject equippedWeapon;
     public int attackPower;
@@ -37,5 +37,6 @@ public class Units
     public int ac;
     public int crit;
     public int move;
+    public int level;
     //Need to add different parts to the total
 }
