@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+    //GameObject GameManager = GameObject.Find("GameManager");
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

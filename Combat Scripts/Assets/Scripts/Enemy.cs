@@ -8,12 +8,14 @@ public class Enemy : MonoBehaviour
     public int defense;
     public int ac;
     public int move;
+    public bool side;
     // Start is called before the first frame update
     void Start()
     {
         health = 10;
         defense = 2;
         ac = 10;
+        side = false;
     }
 
     // Update is called once per frame

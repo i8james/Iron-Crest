@@ -18,6 +18,7 @@ public class Unit : MonoBehaviour
     public int w2Max;
     public int move;
     public bool acted;
+    public bool side;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,7 @@ public class Unit : MonoBehaviour
         health = torso.health;
         maxHealth = torso.health;
         attack = torso.attack + weapon1.attack;
-        w1Ammo = weapon1.ammo;
+        w1Ammo = 100;
         w1Min = weapon1.minRange;
         w1Max = weapon1.maxRange;
         defense = torso.defense;
@@ -36,6 +37,7 @@ public class Unit : MonoBehaviour
         crit = head.crit;
         move = legs.move;
         acted = false;
+        side = true;
     }
 
     // Update is called once per frame
