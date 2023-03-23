@@ -5,6 +5,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     public int health;
+    public int maxHealth;
     public int attack;
     public int defense;
     public int ac;
@@ -18,6 +19,7 @@ public class Unit : MonoBehaviour
         Legs legs = GetComponentInChildren<Legs>();
         Head head = GetComponentInChildren<Head>();
         health = torso.health;
+        maxHealth = torso.maxHealth;
         attack = torso.attack;
         defense = torso.defense;
         ac = torso.ac + legs.ac;
