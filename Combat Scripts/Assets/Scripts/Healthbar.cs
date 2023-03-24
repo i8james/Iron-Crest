@@ -8,18 +8,18 @@ public class Healthbar : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public Image healthBarImage;
-    GameObject tie = GameObject.Find("Enemy3");
-    Enemy enemy = tie.GetComponent<Enemy>();
+    //GameObject tie = GameObject.Find("Enemy3");
+    //Enemy enemy = tie.GetComponent<Enemy>();
     // Start is called before the first frame update
     void Start()
     {
-        maxHealth = enemy.health;
-        currentHealth = maxHealth;
+        //maxHealth = enemy.health;
+        //currentHealth = maxHealth;
 
     }
     public void UpdateHealthBar()
     {
-        healthBarImage.fillAmount =
+        //healthBarImage.fillAmount = ;
     }
 
     // Update is called once per frame
