@@ -56,23 +56,27 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Combat.cs" />
     <Compile Include="Assets\Scripts\Units\Parts\Torso.cs" />
     <Compile Include="Assets\Scripts\Managers\MapManager.cs" />
     <Compile Include="Assets\Scripts\Grid Elements\GridBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\UI Elements\PlayerActionMenu.cs" />
     <Compile Include="Assets\Scripts\UI Elements\HealthBar.cs" />
     <Compile Include="Assets\Scripts\Units\Parts\BuildRobo.cs" />
     <Compile Include="Assets\Scripts\Grid Elements\GridBehaviorEditor.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Units\Unit.cs" />
     <Compile Include="Assets\Scripts\Units\Squad.cs" />
+    <Compile Include="Assets\Scripts\Units\Player Units\PlayerUnit.cs" />
     <Compile Include="Assets\Scripts\Units\Enemy Units\UnitEnemy.cs" />
     <Compile Include="Assets\Scripts\Units\PlayerPhase.cs" />
     <Compile Include="Assets\UIImages\MenuButtons.cs" />
     <Compile Include="Assets\Scripts\UI Elements\BuildMenu.cs" />
     <Compile Include="Assets\Scripts\TurnChange.cs" />
+    <Compile Include="Assets\Scripts\Units\EnemyPhase.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\UIImages\MenuTurn.cs" />
     <Compile Include="Assets\Scripts\Units\Parts\Head.cs" />
@@ -81,10 +85,6 @@
     <Compile Include="Assets\Robot Pieces\Shmovin.cs" />
     <Compile Include="Assets\Scripts\Units\Parts\Legs.cs" />
     <Compile Include="Assets\Scripts\Grid Elements\GridStats.cs" />
-    <Compile Include="Assets\Scripts\Units\Player Units\PlayerUnit.cs" />
-    <Compile Include="Assets\Scripts\UI Elements\PlayerActionMenu.cs" />
-    <Compile Include="Assets\Scripts\Units\EnemyPhase.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
