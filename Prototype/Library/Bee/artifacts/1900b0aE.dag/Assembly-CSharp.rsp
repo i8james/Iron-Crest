@@ -374,6 +374,7 @@
 "Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/Legs.cs"
 "Assets/Scripts/MainMenu.cs"
+"Assets/Scripts/RotationLock.cs"
 "Assets/Scripts/SaveData.cs"
 "Assets/Scripts/Torso.cs"
 "Assets/Scripts/TurnChange.cs"

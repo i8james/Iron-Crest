@@ -453,6 +453,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &558377133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4796376181531271521, guid: ec2a5eddb94f98840b496b4296773899, type: 3}
+  m_PrefabInstance: {fileID: 4796376182440969707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &558377134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558377133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defb0b58048a05f45a635dc6b8fd5891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockX: 1
+  lockY: 0
+  lockZ: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,7 +2236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4796376181531271520, guid: ec2a5eddb94f98840b496b4296773899, type: 3}
       propertyPath: rotationSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4796376181531271521, guid: ec2a5eddb94f98840b496b4296773899, type: 3}
       propertyPath: m_Name

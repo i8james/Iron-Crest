@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Image healthBarImage;
+    /*public Image healthBarImage;
     public Unit unit;
     Quaternion startRotation;
     //has the update change when damage is taken
@@ -38,5 +38,5 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         transform.rotation = startRotation;
-    }
+    }*/
 }
