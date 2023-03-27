@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 4147913429770550714}
   - component: {fileID: 5549980139479628331}
   - component: {fileID: 2253688740013784520}
+  - component: {fileID: 5577875755350518518}
   m_Layer: 0
   m_Name: GridPlane
   m_TagString: Untagged
@@ -814,6 +815,7 @@ MonoBehaviour:
   visited: -1
   x: 0
   y: 0
+  unit: {fileID: 0}
   selected: {fileID: 2977813179298162046}
   arrowActive: 0
   owner: {fileID: 0}
@@ -835,6 +837,35 @@ MonoBehaviour:
   arrow4: {fileID: 853691178}
   points: []
   position: 0
+--- !u!114 &5577875755350518518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4179804297696170562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2253688740013784520}
+          m_TargetAssemblyTypeName: GridStats, Assembly-CSharp
+          m_MethodName: thisAreaClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4399895950130073594
 GameObject:
   m_ObjectHideFlags: 0

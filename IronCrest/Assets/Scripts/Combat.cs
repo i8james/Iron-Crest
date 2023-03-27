@@ -24,10 +24,12 @@ public class Combat : MonoBehaviour
             if (UnityEngine.Random.Range(0, 100) <= unit.crit)
             {
                 target.health -= Damage(unit.attack, target.defense) * 3;
+                print("I hit a crit on " + target.name + "!");
             }
             else
             {
                 target.health -= Damage(unit.attack, target.defense);
+                print("I hit " + target.name + "!");
             }
             if (target.health <= 0)
             {

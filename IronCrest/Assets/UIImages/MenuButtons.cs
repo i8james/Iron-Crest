@@ -36,7 +36,7 @@ public class MenuButtons : MonoBehaviour
 
     public GameObject currentPart;
 
-    public MechBuiler previewMech;
+   
 
     public int currentPartNum;
 
