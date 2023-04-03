@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+    //GameObject GameManager = GameObject.Find("GameManager");
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -15,28 +16,68 @@ public class Combat : MonoBehaviour
     public void attack(GameObject defender)
     {
         Unit unit = GameObject.Find("Player").GetComponent<Unit>();
-        Enemy target = defender.GetComponent<Enemy>();
-        if (CalculateHit(target.ac))
+        Unit target = defender.GetComponent<Unit>();
+        if (unit.w1Ammo > 0)
         {
-            if (UnityEngine.Random.Range(0, 100) <= unit.crit)
+            if (CalculateHit(target.ac))
             {
-                target.health -= Damage(unit.attack, target.defense) * 3;
+                if (UnityEngine.Random.Range(0, 100) <= unit.crit)
+                {
+                    int part = UnityEngine.Random.Range(1, 4);
+                    target.health -= Damage(unit.attack, target.defense) * 3;
+                    if (part == 1)
+                    {
+                        target.torsoHealth -= Damage(unit.attack, target.defense);
+                    }
+                    else if (part == 2)
+                    {
+                        target.armHealth -= Damage(unit.attack, target.defense);
+                    }
+                    else if (part == 3)
+                    {
+                        target.legHealth -= Damage(unit.attack, target.defense);
+                    }
+                    else
+                    {
+                        target.headHealth -= Damage(unit.attack, target.defense);
+                    }
+                }
+                else
+                {
+                    int part = UnityEngine.Random.Range(1, 4);
+                    target.health -= Damage(unit.attack, target.defense);
+                    if (part == 1)
+                    {
+                        target.torsoHealth -= (int)(0.25 * Damage(unit.attack, target.defense));
+                    }
+                    else if (part == 2) 
+                    {
+                        target.armHealth -= (int)(0.25 * Damage(unit.attack, target.defense));
+                    }
+                    else if (part == 3)
+                    {
+                        target.legHealth -= (int)(0.25 * Damage(unit.attack, target.defense));
+                    }
+                    else
+                    {
+                        target.headHealth -= (int)(0.25 * Damage(unit.attack, target.defense));
+                    }
+                }
+                if (target.health <= 0)
+                {
+                    Destroy(target);
+                }
             }
-            else
-            {
-                target.health -= Damage(unit.attack, target.defense);
-            }
-            if (target.health <= 0)
-            {
-                target.death();
-            }
+            unit.consumeAmmo();
         }
     }
 
+    //I have no idea how this hit rate calculation works
     public bool CalculateHit(int dodge)
     {
-        int rint = UnityEngine.Random.Range(0, 100);
-        if (rint <= 100 - dodge)
+        int hitRate = 100 - dodge;
+        double rint = UnityEngine.Random.Range(0, 100);
+        if (hitRate <= rint)
         {
             return true;
         }
@@ -50,6 +91,19 @@ public class Combat : MonoBehaviour
     public int Damage(int attack, int defense)
     {
         return (attack - defense);
+    }
+
+    public void heal(GameObject target)
+    {
+        Unit healee = target.GetComponent<Unit>();
+        if (healee.health <= healee.maxHealth - 10) {
+            healee.health += 10;
+        }
+        else
+        {
+            healee.health += healee.maxHealth - healee.health;
+        }
+        
     }
 
 }

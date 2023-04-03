@@ -7,6 +7,7 @@ public class Legs : MonoBehaviour
     public int move;
     public int ac;
     public int defense;
+    public int health;
     // Start is called before the first frame update
     void Start()
     {

@@ -6,26 +6,45 @@ public class Unit : MonoBehaviour
 {
     public int health;
     public int maxHealth;
+    public int headHealth;
+    public int torsoHealth;
+    public int armHealth;
+    public int legHealth;
     public int attack;
     public int defense;
     public int ac;
     public int crit;
+    public int w1Ammo;
+    public int w2Ammo;
+    public int w1Min;
+    public int w1Max;
+    public int w2Min;
+    public int w2Max;
     public int move;
     public bool acted;
+    public bool side;
     // Start is called before the first frame update
     void Start()
     {
         Torso torso = GetComponentInChildren<Torso>();
         Legs legs = GetComponentInChildren<Legs>();
         Head head = GetComponentInChildren<Head>();
-        health = torso.health;
-        maxHealth = torso.maxHealth;
-        attack = torso.attack;
+        Weapon weapon1 = GetComponentInChildren<Weapon>();
+        health = torso.health + legs.health + head.health;
+        maxHealth = torso.health;
+        torsoHealth = torso.health;
+        headHealth = head.health;
+        armHealth = weapon1.health;
+        attack = torso.attack + weapon1.attack;
+        w1Ammo = 100;
+        w1Min = weapon1.minRange;
+        w1Max = weapon1.maxRange;
         defense = torso.defense;
         ac = torso.ac + legs.ac;
         crit = head.crit;
         move = legs.move;
         acted = false;
+        side = true;
     }
 
     // Update is called once per frame
@@ -37,5 +56,10 @@ public class Unit : MonoBehaviour
     public void heal()
     {
         health += 10;
+    }
+
+    public void consumeAmmo()
+    {
+        w1Ammo--;
     }
 }

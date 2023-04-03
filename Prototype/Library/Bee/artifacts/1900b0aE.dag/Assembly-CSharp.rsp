@@ -362,6 +362,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/CombatCinematics/Scripts/CameraSwapper.cs"
+"Assets/CombatCinematics/Scripts/FlexibleCameraSwitch.cs"
 "Assets/EnemyMovement.cs"
 "Assets/GridBehavior.cs"
 "Assets/GridBehaviorEditor.cs"
@@ -380,6 +381,7 @@
 "Assets/Scripts/Torso.cs"
 "Assets/Scripts/TurnChange.cs"
 "Assets/Scripts/Unit.cs"
+"Assets/Scripts/Weapon.cs"
 "Assets/TurnCycle.cs"
 "Assets/UnitMovement.cs"
 -langversion:9.0

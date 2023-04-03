@@ -5,7 +5,6 @@ using UnityEngine;
 public class Torso : MonoBehaviour
 {
     public int health;
-    public int maxHealth;
     public int ac;
     public int attack;
     public int defense;

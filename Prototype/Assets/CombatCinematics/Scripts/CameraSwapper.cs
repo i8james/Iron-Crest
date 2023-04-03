@@ -10,19 +10,6 @@ public List<Camera> Cameras;
     void Start()
     {
         EnableCamera(0);
-
-        var input = gameObject.GetComponent<InputField>();
-        var se = new InputField.SubmitEvent();
-        se.AddListener(SubmitName);
-        input.onEndEdit = se;
-
-        //or simply use the line below, 
-        //input.onEndEdit.AddListener(SubmitName);  // This also works
-    }
-
-    private void SubmitName(string arg0)
-    {
-        Debug.Log(arg0);
     }
 
     private void Update()
