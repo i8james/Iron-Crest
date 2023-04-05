@@ -15,7 +15,7 @@ C:/Users/colljam24/Documents/GitHub/Iron-Crest/Prototype
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50998
+49850
 Successfully changed project path to: C:/Users/colljam24/Documents/GitHub/Iron-Crest/Prototype
 C:/Users/colljam24/Documents/GitHub/Iron-Crest/Prototype
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,7 +47,7 @@ C:/Users/colljam24/Documents/GitHub/Iron-Crest/Prototype
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 96.77 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 71.77 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.1.3f1 (1cedbfe38737)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity 2022.1.3f1/Editor/Data/Resources/UnitySubsystems
@@ -63,145 +63,145 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity 2022.1.3f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity 2022.1.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity 2022.1.3f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56064
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56988
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: C:/Program Files/Unity 2022.1.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006806 seconds.
+Registered in 0.006453 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 74.45 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 68.82 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.970 seconds
+- Completed reload, in  0.915 seconds
 Domain Reload Profiling:
-	ReloadAssembly (971ms)
-		BeginReloadAssembly (90ms)
+	ReloadAssembly (915ms)
+		BeginReloadAssembly (79ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (647ms)
-			LoadAssemblies (87ms)
+		EndReloadAssembly (617ms)
+			LoadAssemblies (76ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (262ms)
-				TypeCache.Initialize (262ms)
-					TypeCache.ScanAssembly (261ms)
+			SetupTypeCache (259ms)
+				TypeCache.Initialize (259ms)
+					TypeCache.ScanAssembly (257ms)
 				ResolveRequiredComponents (0ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (30ms)
-			SetupLoadedEditorAssemblies (299ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (275ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (52ms)
-				SetLoadedEditorAssemblies (6ms)
-				RefreshPlugins (75ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (117ms)
-				ProcessInitializeOnLoadMethodAttributes (47ms)
+				InitializePlatformSupportModulesInManaged (42ms)
+				SetLoadedEditorAssemblies (7ms)
+				RefreshPlugins (69ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (106ms)
+				ProcessInitializeOnLoadMethodAttributes (50ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.007612 seconds.
+Registered in 0.008620 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file data-0000019AD38EECB0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
+Symbol file data-000001D262E58F70 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD400B820 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file data-000001D262E58F70 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3F84820 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file data-000001D262E58F70 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3F84820 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Telemetry.dll
+Symbol file data-000001D262D31240 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Telemetry.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3D93010 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file data-000001D2635CEE30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Timeline.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3D93010 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
+Symbol file data-000001D260B27140 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3D93010 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file data-000001D262A52E20 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.TextMeshPro.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3DA8420 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
+Symbol file data-000001D260B85F50 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3B99E30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Networking.dll
+Symbol file data-000001D2635E4240 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Networking.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3B99E30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
+Symbol file data-000001D2635E4240 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD15311F0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
+Symbol file data-000001D262890080 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3DA8420 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file data-000001D260B85F50 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\UnityEditor.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1568DE0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Internal.dll
+Symbol file data-000001D260B85F50 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Internal.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1852070 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file data-000001D2634A0630 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\UnityEngine.UI.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3F99C30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Configuration.dll
+Symbol file data-000001D2635E8E00 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Configuration.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3F99C30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.dll
+Symbol file data-000001D2635E8E00 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD33A0080 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
+Symbol file data-000001D2632FE010 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1570DF0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file data-000001D261347230 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3576C60 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Configuration.Editor.dll
+Symbol file data-000001D261347230 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Configuration.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3576C60 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll
+Symbol file data-000001D264365040 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1570DF0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Registration.dll
+Symbol file data-000001D261347230 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Registration.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1570DF0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
+Symbol file data-000001D26134A240 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1570DF0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll
+Symbol file data-000001D26134A240 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1573200 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Scheduler.dll
+Symbol file data-000001D260D70A70 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Scheduler.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1573200 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Environments.Internal.dll
+Symbol file data-000001D260D70A70 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Environments.Internal.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD3A66230 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file data-000001D263377C30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD34227F0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file data-000001D2614640E0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD1573200 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Threading.dll
+Symbol file data-000001D260D70A70 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Threading.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD235BEF0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
+Symbol file data-000001D2633A9460 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
 Symbol file LoadedFromMemory is not a mono symbol file
-Symbol file data-0000019AD342EC50 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Device.dll
+Symbol file data-000001D261470540 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Device.dll
 Symbol file LoadedFromMemory is not a mono symbol file
 Symbol file LoadedFromMemory doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
 Native extension for Android target not found
-Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.69 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.138 seconds
+- Completed reload, in  1.425 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1139ms)
-		BeginReloadAssembly (119ms)
+	ReloadAssembly (1426ms)
+		BeginReloadAssembly (123ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (20ms)
-		EndReloadAssembly (906ms)
-			LoadAssemblies (92ms)
+		EndReloadAssembly (1179ms)
+			LoadAssemblies (94ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (265ms)
-				TypeCache.Initialize (260ms)
-					TypeCache.ScanAssembly (256ms)
+			SetupTypeCache (292ms)
+				TypeCache.Initialize (287ms)
+					TypeCache.ScanAssembly (283ms)
 				ResolveRequiredComponents (5ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (51ms)
-			SetupLoadedEditorAssemblies (458ms)
+			RebuildScriptCaches (59ms)
+			SetupLoadedEditorAssemblies (693ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (13ms)
+				InitializePlatformSupportModulesInManaged (15ms)
 				SetLoadedEditorAssemblies (7ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (80ms)
-				ProcessInitializeOnLoadAttributes (322ms)
-				ProcessInitializeOnLoadMethodAttributes (26ms)
-				AfterProcessingInitializeOnLoad (8ms)
+				BeforeProcessingInitializeOnLoad (83ms)
+				ProcessInitializeOnLoadAttributes (550ms)
+				ProcessInitializeOnLoadMethodAttributes (28ms)
+				AfterProcessingInitializeOnLoad (9ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (7ms)
@@ -209,12 +209,12 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.61 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.59 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3578 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 39 unused Assets / (130.8 KB). Loaded Objects now: 4040.
+Unloading 3580 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 39 unused Assets / (130.7 KB). Loaded Objects now: 4042.
 Memory consumption went from 0.54 GB to 0.54 GB.
-Total: 3.324700 ms (FindLiveObjects: 0.289000 ms CreateObjectMapping: 0.234400 ms MarkObjects: 2.699100 ms  DeleteObjects: 0.101400 ms)
+Total: 3.436100 ms (FindLiveObjects: 0.353600 ms CreateObjectMapping: 0.278100 ms MarkObjects: 2.697300 ms  DeleteObjects: 0.105900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -228,7 +228,151 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 9636.443079 seconds.
-  path: Assets/CombatCinematics/Scripts/CameraSwapper.cs
-  artifactKey: Guid(5672a692635cd2a4080dd37af9cf275e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/CombatCinematics/Scripts/CameraSwapper.cs using Guid(5672a692635cd2a4080dd37af9cf275e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8de593161ee3fd2c17e0c486622e636e') in 0.146443 seconds 
+  Time since last request: 442258.087576 seconds.
+  path: Assets/Scripts/Legs.cs
+  artifactKey: Guid(227e53bcf5f51ad46a69ce242258fc5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Legs.cs using Guid(227e53bcf5f51ad46a69ce242258fc5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8856eba7b3cbafc0c64a00cb36cdc65') in 0.396518 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 86.402018 seconds.
+  path: Assets/Scripts/Enemy.cs
+  artifactKey: Guid(3b7ac0b089d671040ba60b8b645f623d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Enemy.cs using Guid(3b7ac0b089d671040ba60b8b645f623d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a24872785a8e93ac2e6127fb9a45274c') in 0.008234 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.415596 seconds.
+  path: Assets/Scripts/Weapon.cs
+  artifactKey: Guid(cb5cc87f53f14d94c83f225c365d09e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Weapon.cs using Guid(cb5cc87f53f14d94c83f225c365d09e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d00f9f54eb851e00661f1d16cd51ada') in 0.007559 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.859266 seconds.
+  path: Assets/Scripts/Unit.cs
+  artifactKey: Guid(79587ad54f866bf43b444ed6cbdd9790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Unit.cs using Guid(79587ad54f866bf43b444ed6cbdd9790) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f00bb9e1eca152f34c4649586d72c76e') in 0.007242 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 115.167946 seconds.
+  path: Assets/Scripts/HealthBar.cs
+  artifactKey: Guid(f022857078405564d8b894132fea82f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/HealthBar.cs using Guid(f022857078405564d8b894132fea82f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b69b61a340a3d9f2b4fe0f4f2f386aba') in 0.007022 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008629 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file data-000001D263387C40 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D26302BE80 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VSCode.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D26165B010 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D262970020 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Telemetry.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D26153F8D0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Timeline.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D26466D010 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D260B8DF60 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.TextMeshPro.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2608D80A0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D288609C00 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Networking.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D287824F00 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D263140020 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2608D80A0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\UnityEditor.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D264AA1040 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Internal.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2640DE030 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\UnityEngine.UI.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2863D6A30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Configuration.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2863D6A30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D26102BB60 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D286A67EA0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2863D6A30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Configuration.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D264C21030 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2863D6A30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Registration.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2863D6A30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2863D6A30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Environments.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D261068580 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Scheduler.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D261068580 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Environments.Internal.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D264A47010 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Timeline.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D262FFB650 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D2863D6A30 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Threading.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D286138010 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.VisualScripting.State.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file data-000001D263007AB0 doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\ScriptAssemblies\Unity.Services.Core.Device.dll
+Symbol file LoadedFromMemory is not a mono symbol file
+Symbol file LoadedFromMemory doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\colljam24\Documents\GitHub\Iron-Crest\Prototype\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Refreshing native plugins compatible for Editor in 0.56 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.048 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1048ms)
+		BeginReloadAssembly (146ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (6ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (41ms)
+		EndReloadAssembly (805ms)
+			LoadAssemblies (96ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (255ms)
+				TypeCache.Initialize (250ms)
+					TypeCache.ScanAssembly (245ms)
+				ResolveRequiredComponents (5ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (376ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (20ms)
+				SetLoadedEditorAssemblies (7ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (63ms)
+				ProcessInitializeOnLoadAttributes (253ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.81 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3559 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 21 unused Assets / (96.1 KB). Loaded Objects now: 4056.
+Memory consumption went from 0.53 GB to 0.53 GB.
+Total: 2.858700 ms (FindLiveObjects: 0.266900 ms CreateObjectMapping: 0.172000 ms MarkObjects: 2.371600 ms  DeleteObjects: 0.046900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

@@ -1,11 +1,11 @@
 Main Features:
-Turn Based Movement
-Turn Based Combat
-Weapon Ranks
-Character Classes and Archetypes
+-Turn Based Movement
+-Turn Based Combat
+(Scrapped)Weapon Ranks
+(Scrapped)Character Classes and Archetypes
 Support role (Stretch goal)
 Character Skills (Stretch goals)
-Better stat growths with mechs with a more specialized role/class.
+(Set aside for later)Better stat growths with mechs with a more specialized role/class.
 Retaliation attacks
 Choosing attacks (multiple weapons)
 Map Generation and map creation

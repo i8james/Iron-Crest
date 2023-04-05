@@ -373,7 +373,6 @@
 "Assets/Scripts/Combat.cs"
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/Head.cs"
-"Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/Legs.cs"
 "Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/RotationLock.cs"

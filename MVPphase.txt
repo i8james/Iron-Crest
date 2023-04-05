@@ -1,0 +1,20 @@
+Is Your Game A Minimum Viable Product? 10 pts Total
+Is Your Minimum Viable Product Playable? 5 pts Total
+Is Your Minimum Viable Product ready for testing? (5 pts Total)
+ Does it run, control, and feel like a game when played by
+someone OTHER than a member of the team? _ /5
+Unkown
+ Are most of your Basic features in your game fully complete? _ /5
+Yes
+ Are most of your Unique features in your game fully complete? _ /5
+Almost
+ Do you have a sample / vertical slice of your content? _ /5
+Yes?
+ Have you built out your levels? (levels / tutorial levels) _ /5
+Working on it
+ Is there gameplay in those areas? (purposefully placed things) _ /5
+yes
+ Have you included other features to help speed up development and testing? _ /5
+Sure
+ Have you built content in order to answer testing-questions you have? _ /5
+????
