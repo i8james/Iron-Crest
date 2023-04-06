@@ -6,6 +6,7 @@ public class FlexibleCameraSwitch : MonoBehaviour
 {
     public GameObject[] cameraList;
     private int currentCamera;
+    public GameObject PerspectiveCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +32,15 @@ public class FlexibleCameraSwitch : MonoBehaviour
         }
     }
 
+    public void SwitchToCombatCamera()
+    {
+        cameraList[currentCamera].gameObject.SetActive(false);
+        PerspectiveCamera.gameObject.SetActive(true);
+    }
+
     public void SwapCamera()
     {
+        PerspectiveCamera.gameObject.SetActive(false);
         currentCamera++;
         if (currentCamera < cameraList.Length)
         {

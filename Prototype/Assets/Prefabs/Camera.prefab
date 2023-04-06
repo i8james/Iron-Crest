@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4796376181531271527}
   - component: {fileID: 4796376181531271520}
-  - component: {fileID: -1984014141077989051}
   - component: {fileID: -3132465921637734240}
   m_Layer: 0
   m_Name: Camera
@@ -53,19 +52,6 @@ MonoBehaviour:
   maxZoomDist: 50
   X: 0
   Y: 0
---- !u!114 &-1984014141077989051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4796376181531271521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba3844adda60b5e49b16505accecc4de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraList: []
 --- !u!114 &-3132465921637734240
 MonoBehaviour:
   m_ObjectHideFlags: 0
