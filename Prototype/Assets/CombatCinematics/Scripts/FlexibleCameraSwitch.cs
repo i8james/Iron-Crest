@@ -7,6 +7,8 @@ public class FlexibleCameraSwitch : MonoBehaviour
     public GameObject[] cameraList;
     private int currentCamera;
     public GameObject PerspectiveCamera;
+    public GameObject AttackerCamera;
+    public GameObject DefendingCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -53,5 +55,16 @@ public class FlexibleCameraSwitch : MonoBehaviour
             currentCamera = 0;
             cameraList[currentCamera].gameObject.SetActive(true);
         }
+    }
+    //Below is what you can use with the cameras are the units VCams.
+    public void AttackingCinematic()
+    {
+        PerspectiveCamera.gameObject.SetActive(false);
+        AttackerCamera.gameObject.SetActive(true);
+    }
+    public void DefendingCinematic()
+    {
+        AttackerCamera.gameObject.SetActive(false);
+        DefendingCamera.gameObject.SetActive(true);
     }
 }
