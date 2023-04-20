@@ -6,6 +6,10 @@ public class Unit : MonoBehaviour
 {
     public int health;
     public int maxHealth;
+    public int headHealth;
+    public int torsoHealth;
+    public int armHealth;
+    public int legHealth;
     public int attack;
     public int defense;
     public int ac;
@@ -26,8 +30,11 @@ public class Unit : MonoBehaviour
         Legs legs = GetComponentInChildren<Legs>();
         Head head = GetComponentInChildren<Head>();
         Weapon weapon1 = GetComponentInChildren<Weapon>();
-        health = torso.health;
+        health = torso.health + legs.health + head.health;
         maxHealth = torso.health;
+        torsoHealth = torso.health;
+        headHealth = head.health;
+        armHealth = weapon1.health;
         attack = torso.attack + weapon1.attack;
         w1Ammo = 100;
         w1Min = weapon1.minRange;

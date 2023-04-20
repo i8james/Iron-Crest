@@ -6,6 +6,7 @@ public class Head : MonoBehaviour
 {
     public int acc;
     public int crit;
+    public int health;
     // Start is called before the first frame update
     void Start()
     {

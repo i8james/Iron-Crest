@@ -16,22 +16,56 @@ public class Combat : MonoBehaviour
     public void attack(GameObject defender)
     {
         Unit unit = GameObject.Find("Player").GetComponent<Unit>();
-        Enemy target = defender.GetComponent<Enemy>();
+        Unit target = defender.GetComponent<Unit>();
         if (unit.w1Ammo > 0)
         {
             if (CalculateHit(target.ac))
             {
                 if (UnityEngine.Random.Range(0, 100) <= unit.crit)
                 {
+                    int part = UnityEngine.Random.Range(1, 4);
                     target.health -= Damage(unit.attack, target.defense) * 3;
+                    if (part == 1)
+                    {
+                        target.torsoHealth -= Damage(unit.attack, target.defense);
+                    }
+                    else if (part == 2)
+                    {
+                        target.armHealth -= Damage(unit.attack, target.defense);
+                    }
+                    else if (part == 3)
+                    {
+                        target.legHealth -= Damage(unit.attack, target.defense);
+                    }
+                    else
+                    {
+                        target.headHealth -= Damage(unit.attack, target.defense);
+                    }
                 }
                 else
                 {
+                    int part = UnityEngine.Random.Range(1, 4);
                     target.health -= Damage(unit.attack, target.defense);
+                    if (part == 1)
+                    {
+                        target.torsoHealth -= (int)(0.25 * Damage(unit.attack, target.defense));
+                    }
+                    else if (part == 2) 
+                    {
+                        target.armHealth -= (int)(0.25 * Damage(unit.attack, target.defense));
+                    }
+                    else if (part == 3)
+                    {
+                        target.legHealth -= (int)(0.25 * Damage(unit.attack, target.defense)));
+                    }
+                    else
+                    {
+                        target.headHealth -= (int)(0.25 * Damage(unit.attack, target.defense));
+                    }
                 }
                 if (target.health <= 0)
                 {
-                    target.death();
+                    Destroy(target);
                 }
             }
             unit.consumeAmmo();
