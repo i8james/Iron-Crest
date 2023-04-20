@@ -13,12 +13,14 @@ public class MainMenu : MonoBehaviour
     {
         
     }
+
     //Determines what type of button it is when clicked
     public void LoadScene(string sceneName)
     {
         Debug.Log("Loading" + sceneName);
         SceneManager.LoadScene(sceneName);
     }
+
     //Will quit the program if is opened as an application.
     public void Quit()
     {
