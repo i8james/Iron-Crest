@@ -8,6 +8,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    public void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +24,19 @@ public class MainMenu : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         Debug.Log("Loading" + sceneName);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadSceneAsync(sceneName);
+    }
+
+    public void LoadMainScreen()
+    {
+        Debug.Log("Loading Main Menu");
+        SceneManager.LoadSceneAsync("MainMenu");
+    }
+
+    public void LoadInfoScreen()
+    {
+        Debug.Log("Loading Info Screen");
+        SceneManager.LoadSceneAsync("InfoScreen");
     }
 
     //Will quit the program if is opened as an application.

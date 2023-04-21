@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Combat.unity
     guid: 9ef40e6da9a77874fbce3c90c20d604e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Camera.unity
     guid: f539ef79ac6845f45bdbdc9ba8c1d41b
+  - enabled: 1
+    path: Assets/Scenes/InfoScene.unity
+    guid: 21396ce749566024b9d2e79d57ec33f7
   m_configObjects: {}
