@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class FlexibleCameraSwitch : MonoBehaviour
 {
+    //Old Camera Swapper list
     public GameObject[] cameraList;
     private int currentCamera;
     public GameObject PerspectiveCamera;
-    public GameObject AttackerCamera;
-    public GameObject DefendingCamera;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +55,9 @@ public class FlexibleCameraSwitch : MonoBehaviour
             cameraList[currentCamera].gameObject.SetActive(true);
         }
     }
-    //Below is what you can use with the cameras are the units VCams.
+    //Recycled combat cinematics
+
+    /*//Below is what you can use with the cameras are the units VCams.
     public void AttackingCinematic()
     {
         PerspectiveCamera.gameObject.SetActive(false);
@@ -66,5 +67,69 @@ public class FlexibleCameraSwitch : MonoBehaviour
     {
         AttackerCamera.gameObject.SetActive(false);
         DefendingCamera.gameObject.SetActive(true);
+    }*/
+
+
+    //Camera Methods added by James
+    //I dont want to break the script so ill add it as extra functions
+    private GameObject CombatCamera;
+    public Transform attackingUnit;
+    public Transform defendingUnit;
+    public GameObject Attacker;
+    public GameObject Defender;
+    private GameObject attackingVCam;
+    private GameObject defendingVCam;
+    private bool AttackingCamReady;
+    private bool DefendingCamReady;
+
+    //Gets the cameras of the attacking and defending unit
+    public void GetTheCameras()
+    {
+        GetAttackerCam();
+        GetDefenderCam();
+        CombatCamera = PerspectiveCamera;
+        if (AttackingCamReady == true)
+        {
+            if (DefendingCamReady == true)
+            {
+                InitiateCombatCinematic();
+            }
+        }
+    }
+    
+    //Finds the attackers vcam
+    public void GetAttackerCam()
+    {
+        Transform childOfAnotherObject = attackingUnit.Find("attackingVCam");
+        Debug.Log("Attacking Camera Found");
+        AttackingCamReady = true;
+    }
+
+    //Find the defenders vcam
+    public void GetDefenderCam()
+    {
+        Transform childOfAnotherObject = defendingUnit.Find("defendingVCam");
+        Debug.Log("Attacking Camera Found");
+        DefendingCamReady = true;
+    }
+    public void InitiateCombatCinematic()
+    {
+        SwapToAttackingCamera();
+        SwapToDefendingCamera();
+        CombatCamera.gameObject.SetActive(true);
+        Debug.Log("Combat Finished...");
+    }
+    //Swaps the active camera to the attackers camera
+    public void SwapToAttackingCamera()
+    {
+        attackingVCam.gameObject.SetActive(true);
+        //Attacking animations + Sounds trigger
+        Debug.Log("Pew Pew!!");
+    }
+    //Swaps the active camera to defending camera
+    public void SwapToDefendingCamera()
+    {
+        defendingVCam.gameObject.SetActive(true);
+        Debug.Log("Ouch i got hit!!!");
     }
 }
