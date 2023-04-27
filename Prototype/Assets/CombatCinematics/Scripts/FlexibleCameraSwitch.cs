@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class FlexibleCameraSwitch : MonoBehaviour
 {
@@ -72,52 +73,51 @@ public class FlexibleCameraSwitch : MonoBehaviour
 
     //Camera Methods added by James
     //I dont want to break the script so ill add it as extra functions
-    private GameObject CombatCamera;
+    [Header("Drag and Drop")]
     public Transform attackingUnit;
     public Transform defendingUnit;
     public GameObject Attacker;
     public GameObject Defender;
-    private GameObject attackingVCam;
-    private GameObject defendingVCam;
-    private bool AttackingCamReady;
-    private bool DefendingCamReady;
+    public CinemachineVirtualCamera attackingVCam;
+    public CinemachineVirtualCamera defendingVCam;
 
     //Gets the cameras of the attacking and defending unit
     public void GetTheCameras()
     {
         GetAttackerCam();
         GetDefenderCam();
-        CombatCamera = PerspectiveCamera;
-        if (AttackingCamReady == true)
-        {
-            if (DefendingCamReady == true)
-            {
-                InitiateCombatCinematic();
-            }
-        }
     }
     
     //Finds the attackers vcam
     public void GetAttackerCam()
     {
-        Transform childOfAnotherObject = attackingUnit.Find("attackingVCam");
+        GameObject originalGameObject = GameObject.Find(Attacker);
+        GameObject child = originalGameObject.transform.GetChild("attackingVCam").gameObject;
+        var Vcam = attackingVCam.GetComponent<CinemachineVirtualCamera>();
+        if (Vcam == null) Debug.LogError("A component cinemachineVirtualCamera is missing\n");
         Debug.Log("Attacking Camera Found");
-        AttackingCamReady = true;
     }
 
     //Find the defenders vcam
     public void GetDefenderCam()
     {
-        Transform childOfAnotherObject = defendingUnit.Find("defendingVCam");
-        Debug.Log("Attacking Camera Found");
-        DefendingCamReady = true;
+        defendingUnit originalGameObject = GameObject.Find(Defender);
+        defendingVCam child = originalGameObject.transform.GetChild("defendingVCam").gameObject;
+        var Vcam = defendingVCam.GetComponent<CinemachineVirtualCamera>();
+        if (Vcam == null) Debug.LogError("A component cinemachineVirtualCamera is missing\n");
+        Debug.Log("Defending Camera Found");
     }
     public void InitiateCombatCinematic()
     {
+        GetTheCameras();
+        CombativeCameraSwap();
+        PerspectiveCamera.gameObject.SetActive(true);
+        Debug.Log("Combat Finished...");
+    }
+    public void CombativeCameraSwap()
+    {
         SwapToAttackingCamera();
         SwapToDefendingCamera();
-        CombatCamera.gameObject.SetActive(true);
-        Debug.Log("Combat Finished...");
     }
     //Swaps the active camera to the attackers camera
     public void SwapToAttackingCamera()

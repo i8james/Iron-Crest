@@ -357,7 +357,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 41098611}
   m_Follow: {fileID: 0}
@@ -386,7 +386,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289249651}
-  m_LocalRotation: {x: 0.07708284, y: -0.000000017155186, z: 0.0000000013263165, w: 0.9970247}
+  m_LocalRotation: {x: 0.07708286, y: -0.000000017155186, z: 0.0000000013263168, w: 0.9970247}
   m_LocalPosition: {x: 0, y: 3.5, z: -22.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -733,7 +733,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 390589848}
   m_Follow: {fileID: 0}
@@ -804,7 +804,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 390589848}
   m_Follow: {fileID: 0}
@@ -833,7 +833,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241497535}
-  m_LocalRotation: {x: 0.07708284, y: 0.000000017155186, z: -0.0000000013263165, w: 0.9970247}
+  m_LocalRotation: {x: 0.077082835, y: -0.00000001715519, z: 0.0000000013263167, w: 0.9970247}
   m_LocalPosition: {x: 0, y: 3.5, z: -22.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -986,7 +986,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1249839860}
   - component: {fileID: 1249839861}
-  - component: {fileID: 1249839862}
   m_Layer: 0
   m_Name: PerspectiveCamera
   m_TagString: Untagged
@@ -1001,8 +1000,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249839859}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.14521317, y: 0.00000008940696, z: -0.0000000074505797, w: 0.9894004}
+  m_LocalPosition: {x: -1.1368684e-13, y: 3, z: -10.000001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1026,7 +1025,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 100
+  m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1564982829}
   m_Follow: {fileID: 1564982829}
@@ -1048,21 +1047,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1886246551}
---- !u!114 &1249839862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249839859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Offset: {x: 0, y: 3, z: 0}
-  m_ApplyAfter: 1
-  m_PreserveComposition: 0
 --- !u!1 &1331690992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1515,17 +1499,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3844adda60b5e49b16505accecc4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraList:
-  - {fileID: 0}
-  - {fileID: 1226214123}
-  - {fileID: 1241497535}
-  - {fileID: 289249651}
-  - {fileID: 2130231838}
+  cameraList: []
   PerspectiveCamera: {fileID: 1249839859}
-  attackingUnit: {fileID: 0}
-  defendingUnit: {fileID: 0}
-  Attacker: {fileID: 0}
-  Defender: {fileID: 0}
+  attackingUnit: {fileID: 390589848}
+  defendingUnit: {fileID: 41098611}
+  Attacker: {fileID: 390589844}
+  Defender: {fileID: 41098607}
+  attackingVCam: {fileID: 0}
+  defendingVCam: {fileID: 0}
 --- !u!4 &1517289787
 Transform:
   m_ObjectHideFlags: 0
@@ -1928,8 +1909,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780535622}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -40, y: 23, z: 0}
+  m_LocalRotation: {x: 0.1026812, y: 0.6996118, z: -0.102681205, w: 0.69961166}
+  m_LocalPosition: {x: -50, y: 23, z: 0.0000009536743}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1999,7 +1980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowDebugText: 0
+  m_ShowDebugText: 1
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
@@ -2031,8 +2012,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1886246551}
   - component: {fileID: 1886246554}
-  - component: {fileID: 1886246557}
-  - component: {fileID: 1886246558}
+  - component: {fileID: 1886246555}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2067,7 +2047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1886246557
+--- !u!114 &1886246555
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2076,23 +2056,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1886246550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c41ac9245b87c4192012080077d830, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Damping: 0
---- !u!114 &1886246558
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886246550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d1163fa822e8b418a0a603ec078d5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Damping: 0
 --- !u!1 &1887771795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,7 +2145,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1517289786}
         m_TargetAssemblyTypeName: FlexibleCameraSwitch, Assembly-CSharp
-        m_MethodName: GetTheCameras
+        m_MethodName: InitiateCombatCinematic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2692,7 +2658,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 41098611}
   m_Follow: {fileID: 0}
