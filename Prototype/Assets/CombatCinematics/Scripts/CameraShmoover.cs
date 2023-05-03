@@ -21,7 +21,7 @@ public class CameraShmoover : MonoBehaviour
     void Update()
     {
         Move();
-        Zoom();
+        //Zoom();
     }
 
     void Move()
