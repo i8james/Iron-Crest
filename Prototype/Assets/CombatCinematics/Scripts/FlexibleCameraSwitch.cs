@@ -6,7 +6,7 @@ using Cinemachine;
 public class FlexibleCameraSwitch : MonoBehaviour
 {
     //Old Camera Swapper list
-    public GameObject[] cameraList;
+    public CinemachineVirtualCamera[] cameraList;
     private int currentCamera;
     public GameObject PerspectiveCamera;
 
@@ -23,21 +23,14 @@ public class FlexibleCameraSwitch : MonoBehaviour
         {
             cameraList[0].gameObject.SetActive(true);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonUp(0))
-        {
-            //SwapCamera();
-        }
+        //Should have the map camera be the one that the game starts with.
+        //MapCamera.gameObject.SetActive(true);
     }
 
     public void SwitchToCombatCamera()
     {
-        cameraList[currentCamera].gameObject.SetActive(false);
-        PerspectiveCamera.gameObject.SetActive(true);
+        cameraList[0].gameObject.SetActive(true);
+        Debug.Log("Swapped to Mobile camera");
     }
 
     public void SwapCamera()
@@ -56,72 +49,36 @@ public class FlexibleCameraSwitch : MonoBehaviour
             cameraList[currentCamera].gameObject.SetActive(true);
         }
     }
-    //Recycled combat cinematics
-
-    /*//Below is what you can use with the cameras are the units VCams.
-    public void AttackingCinematic()
-    {
-        PerspectiveCamera.gameObject.SetActive(false);
-        AttackerCamera.gameObject.SetActive(true);
-    }
-    public void DefendingCinematic()
-    {
-        AttackerCamera.gameObject.SetActive(false);
-        DefendingCamera.gameObject.SetActive(true);
-    }*/
-
 
     //Camera Methods added by James
     //I dont want to break the script so ill add it as extra functions
     [Header("Drag and Drop")]
-    public Transform attackingUnit;
-    public Transform defendingUnit;
-    public GameObject Attacker;
-    public GameObject Defender;
     public CinemachineVirtualCamera attackingVCam;
     public CinemachineVirtualCamera defendingVCam;
+    public int transitionTime = 2;
 
-    //Gets the cameras of the attacking and defending unit
-    public void GetTheCameras()
+    IEnumerator Waiter()
     {
-        GetAttackerCam();
-        GetDefenderCam();
-    }
-    
-    //Finds the attackers vcam
-    public void GetAttackerCam()
-    {
-        GameObject originalGameObject = GameObject.Find(Attacker);
-        GameObject child = originalGameObject.transform.GetChild("attackingVCam").gameObject;
-        var Vcam = attackingVCam.GetComponent<CinemachineVirtualCamera>();
-        if (Vcam == null) Debug.LogError("A component cinemachineVirtualCamera is missing\n");
-        Debug.Log("Attacking Camera Found");
+        yield return new WaitForSeconds(transitionTime);
     }
 
-    //Find the defenders vcam
-    public void GetDefenderCam()
-    {
-        defendingUnit originalGameObject = GameObject.Find(Defender);
-        defendingVCam child = originalGameObject.transform.GetChild("defendingVCam").gameObject;
-        var Vcam = defendingVCam.GetComponent<CinemachineVirtualCamera>();
-        if (Vcam == null) Debug.LogError("A component cinemachineVirtualCamera is missing\n");
-        Debug.Log("Defending Camera Found");
-    }
     public void InitiateCombatCinematic()
     {
-        GetTheCameras();
         CombativeCameraSwap();
         PerspectiveCamera.gameObject.SetActive(true);
         Debug.Log("Combat Finished...");
     }
     public void CombativeCameraSwap()
     {
+        cameraList[currentCamera].gameObject.SetActive(false);
         SwapToAttackingCamera();
+        //StartCoroutine(Waiter());
         SwapToDefendingCamera();
     }
     //Swaps the active camera to the attackers camera
     public void SwapToAttackingCamera()
     {
+        cameraList[currentCamera].gameObject.SetActive(false);
         attackingVCam.gameObject.SetActive(true);
         //Attacking animations + Sounds trigger
         Debug.Log("Pew Pew!!");
@@ -129,7 +86,9 @@ public class FlexibleCameraSwitch : MonoBehaviour
     //Swaps the active camera to defending camera
     public void SwapToDefendingCamera()
     {
+        cameraList[currentCamera].gameObject.SetActive(false);
         defendingVCam.gameObject.SetActive(true);
+        //Stagger/death effects
         Debug.Log("Ouch i got hit!!!");
     }
 }
