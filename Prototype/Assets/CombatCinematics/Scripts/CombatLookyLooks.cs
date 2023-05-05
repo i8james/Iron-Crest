@@ -19,8 +19,6 @@ public class CombatLookyLooks : MonoBehaviour
 
     void Start()
     {
-        GetAttacker();
-        GetDefender();
         PerspectiveCam.gameObject.SetActive(true);
     }
 
@@ -93,6 +91,8 @@ public class CombatLookyLooks : MonoBehaviour
     
     public void InitiateCombatCinematic()
     {
+        GetAttacker();
+        GetDefender();
         PerspectiveCam.gameObject.SetActive(false);
         //Combat Cams Initiates the combat blend
         CombatCams.gameObject.SetActive(true);

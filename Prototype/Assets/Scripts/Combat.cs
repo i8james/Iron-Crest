@@ -11,6 +11,8 @@ public class Combat : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             attack(GameObject.Find("Enemy"));
+            
+            //Calls to my combat cinematics script
         }
     }
     public void attack(GameObject defender)
