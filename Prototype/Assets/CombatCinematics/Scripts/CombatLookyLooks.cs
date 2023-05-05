@@ -58,8 +58,8 @@ public class CombatLookyLooks : MonoBehaviour
     //Find the defending unit
     public void GetDefender()
     {
+        //Replace with the combat script calling
         defendingUnit = GameObject.Find("/Units/Cylinder");
-        //Transform childOfAnotherObject = defendingUnit.Find("defendingVCam");
         if(defendingUnit != null)
         {
             Debug.Log(defendingUnit + "Unit Found");
