@@ -7,8 +7,12 @@ public class CombatLookyLooks : MonoBehaviour
 {
     //Camera Methods added by James
     //I dont want to break the script so ill add it as extra functions
-    public GameObject attackingUnit;
-    public GameObject defendingUnit;
+    private GameObject attackingUnit;
+    public Transform attackingUnitTransform;
+    public CinemachineVirtualCamera attackingVcam;
+    private GameObject defendingUnit;
+    public Transform defendingUnitTransform;
+    public CinemachineVirtualCamera defendingVcam;
     public GameObject PerspectiveCam;
     public GameObject CombatCams;
     private GameObject Units;
@@ -20,33 +24,65 @@ public class CombatLookyLooks : MonoBehaviour
         PerspectiveCam.gameObject.SetActive(true);
     }
 
-    //Finds the attackers vcam
+    //Finds the attacking unit
     public void GetAttacker()
     {
         attackingUnit = GameObject.Find("Capsule");
-        //Transform childOfAnotherObject = attackingUnit.Find("attackingVCam");
+        //Replace the previous line with the attacking unit finding script call
         if (attackingUnit != null)
         {
             Debug.Log("Attacking Unit found");
+            AttackingCamLooksAndFollows();
         }
         else
         {
-            Debug.Log("Attacking Unit Not Located");
+            Debug.Log(attackingUnit +"Unit Not found");
         }
     }
 
-    //Find the defenders vcam
+    public void AttackingCamLooksAndFollows()
+    {
+        attackingUnitTransform = attackingUnit.GetComponent<Transform>();
+        if (attackingUnitTransform != null)
+        {
+            Debug.Log(attackingUnit + "transform found");
+            attackingVcam.LookAt = attackingUnitTransform;
+            attackingVcam.Follow = attackingUnitTransform;
+        }
+        else
+        {
+            Debug.Log(attackingUnit + "units transform not found");
+        }
+    }
+
+    //Find the defending unit
     public void GetDefender()
     {
         defendingUnit = GameObject.Find("/Units/Cylinder");
         //Transform childOfAnotherObject = defendingUnit.Find("defendingVCam");
         if(defendingUnit != null)
         {
-            Debug.Log("Defending Unit Found");
+            Debug.Log(defendingUnit + "Unit Found");
+            DefenderCamLooksAndFollows();
         }
         else
         {
-            Debug.Log("Defending Unit Not Located");
+            Debug.Log("Defending Unit Not found");
+        }
+    }
+
+    public void DefenderCamLooksAndFollows()
+    {
+        defendingUnitTransform = defendingUnit.GetComponent<Transform>();
+        if (attackingUnitTransform != null)
+        {
+            Debug.Log(defendingUnit + "transform found");
+            defendingVcam.LookAt = defendingUnitTransform;
+            defendingVcam.Follow = defendingUnitTransform;
+        }
+        else
+        {
+            Debug.Log(defendingUnit + "transform not found");
         }
     }
 
