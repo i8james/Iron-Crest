@@ -569,6 +569,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605429907}
   m_CullTransparentMesh: 1
+--- !u!1 &783547507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8910560716405883431, guid: 8595a634ace963c4994b4988a509b5b7, type: 3}
+  m_PrefabInstance: {fileID: 8910560715532518206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &783547512
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783547507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4c41ac9245b87c4192012080077d830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Damping: 0
 --- !u!1 &883360145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8910560714653614767, guid: 8595a634ace963c4994b4988a509b5b7, type: 3}
@@ -1951,7 +1969,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8910560714653614762, guid: 8595a634ace963c4994b4988a509b5b7, type: 3}
       propertyPath: m_ChildCameras.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8910560714653614764, guid: 8595a634ace963c4994b4988a509b5b7, type: 3}
       propertyPath: m_RootOrder
@@ -2001,6 +2019,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: CombatCameras
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8910560716405883426, guid: 8595a634ace963c4994b4988a509b5b7, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 8595a634ace963c4994b4988a509b5b7, type: 3}

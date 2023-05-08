@@ -369,6 +369,7 @@
 "Assets/GridBehavior.cs"
 "Assets/GridBehaviorEditor.cs"
 "Assets/GridStats.cs"
+"Assets/JamesUITinker/Scripts/UIManagement.cs"
 "Assets/NewBehaviourScript.cs"
 "Assets/Robot Pieces/Shmovin.cs"
 "Assets/Scripts/CameraController.cs"
