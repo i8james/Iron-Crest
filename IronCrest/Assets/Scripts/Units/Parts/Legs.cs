@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Legs : MonoBehaviour
+public class Legs : BasePart
 {
     public int move;
     public int ac;
-    public int defense;
+   
+    public int might;
+    
 
     public GameObject bodyPoint;
 
@@ -21,5 +23,14 @@ public class Legs : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AddToOwner(Unit newOwner)
+    {
+        
+        newOwner.moveRange = move;
+        newOwner.ac += ac;
+        newOwner.health += health;
+        newOwner.might += might;
     }
 }

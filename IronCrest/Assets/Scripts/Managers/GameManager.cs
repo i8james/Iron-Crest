@@ -16,10 +16,15 @@ public class GameManager : MonoBehaviour
 
     public Unit activeUnit;
 
+    public List<GameObject> stockParts = new List<GameObject>();
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        NewGameState(GameState.PlayerSelect, null);
+        NewGameState(GameState.PartSelect, null);
     }
 
     private void Awake()
@@ -38,7 +43,7 @@ public class GameManager : MonoBehaviour
         switch(newState)
         {
             case GameState.PlayerSpawn:
-                SpawnUnits();
+                //SpawnUnits();
                 break;
             case GameState.EnemySpawn:
                 NewGameState(GameState.PlayerSelect, null);
@@ -55,6 +60,7 @@ public class GameManager : MonoBehaviour
                 print("Player Menu Phase");
                 break;
             case GameState.PlayerAction:
+                print("Player Action Phase");
                 break;
             case GameState.EnemySelect:
                 print("Enemy Select Phase");
@@ -74,6 +80,8 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
+    PartSelect,
+
     PlayerSpawn,
     EnemySpawn,
     PlayerSelect,
@@ -84,7 +92,8 @@ public enum GameState
     EnemySelect,
     EnemyTargetSelect,
     EnemyMove,
-    EnemyAction
+    EnemyAction,
+    StageComplete
 }
 
 

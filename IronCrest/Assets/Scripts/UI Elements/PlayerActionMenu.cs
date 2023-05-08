@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerActionMenu : MonoBehaviour
 {
+    public Image rWeaponIcon;
+
+    public Image lWeaponIcon;
     
 
     private void Start()
@@ -15,6 +19,9 @@ public class PlayerActionMenu : MonoBehaviour
     {
         if(newState == GameState.PlayerMenu)
         {
+            rWeaponIcon.sprite = GameManager.Instance.activeUnit.build2.rWeapon.GetComponent<Weapon>().partIcon;
+            lWeaponIcon.sprite = GameManager.Instance.activeUnit.build2.lWeapon.GetComponent<Weapon>().partIcon;
+
             gameObject.SetActive(true);
         } else
         {
@@ -29,13 +36,16 @@ public class PlayerActionMenu : MonoBehaviour
         switch(selection)
         {
             case 1:
-                BeginAttack();
+                BeginAttack(LeftOrRight.Right);
                 break;
             case 2:
                 CancelMovement();
                 break;
             case 3:
                 Wait();
+                break;
+            case 4:
+                BeginAttack(LeftOrRight.Left);
                 break;
             default:
                 print("Error, invalid selection");
@@ -44,9 +54,10 @@ public class PlayerActionMenu : MonoBehaviour
     }
 
 
-    private void BeginAttack()
+    private void BeginAttack(LeftOrRight choice)
     {
-        GameManager.Instance.NewGameState(GameState.PlayerAction, GameManager.Instance.activeUnit);
+        GameManager.Instance.activeUnit.PickWeapon(choice);
+        //GameManager.Instance.NewGameState(GameState.PlayerAction, GameManager.Instance.activeUnit);
         print("Selected Attack");
     }
 
@@ -57,7 +68,8 @@ public class PlayerActionMenu : MonoBehaviour
 
     private void Wait()
     {
-        GameManager.Instance.NewGameState(GameState.PlayerSelect, null);
+        //GameManager.Instance.NewGameState(GameState.PlayerSelect, null);
+        EventManager.RecieveEndPlayerTurn();
     }
 
 }

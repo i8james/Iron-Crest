@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+/*
 [CustomEditor(typeof(GridBehavior))]
 [CanEditMultipleObjects]
 
 public class GridBehaviorEditor : Editor
-{
+{/*
     
 
     public override void OnInspectorGUI()
@@ -25,3 +25,4 @@ public class GridBehaviorEditor : Editor
         DrawDefaultInspector();
     }
 }
+*/

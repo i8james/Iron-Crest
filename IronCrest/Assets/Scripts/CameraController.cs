@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
     public float X;
     public float Y;
 
+    GameState currentState;
+
     private Camera cam;
 
     void Awake()
@@ -28,6 +30,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.Instance.activeUnit != null && (currentState == GameState.EnemyMove))
+        {
+            FocusOnPosition(GameManager.Instance.activeUnit.transform.position);
+        }
         Move();
         Zoom();
         Rotate();
@@ -69,6 +75,7 @@ public class CameraController : MonoBehaviour
 
     public void OnGameStateChange(GameState newState)
     {
+        currentState = newState;
         if(GameManager.Instance.activeUnit != null)
         {
             FocusOnPosition(GameManager.Instance.activeUnit.transform.position);

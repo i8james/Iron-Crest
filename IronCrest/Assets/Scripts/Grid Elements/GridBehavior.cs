@@ -11,69 +11,18 @@ public class GridBehavior : MonoBehaviour
     public int scale = 1;
     public GameObject gridPrefab;
     public Vector3 leftBottomLocation = new Vector3(0, 0, 0);
+    public bool previewActive;
+
+    public bool previewChangeState;
+    
 
     public GameObject[,] gridArray;
 
     public List<GameObject> path = new List<GameObject>();
 
-
-
-
-    public void ReciveDisplayLocation(GridStats targetTile)
-    {
-
-        //EventManager.ReciveDisplayMovePath(CreateTilePath(targetTile, GameManager.Instance.activeUnit));
-        path = CreateTilePath(targetTile, GameManager.Instance.activeUnit);
-    }
-
-    public void SendGridPath(GridStats targetTile)
-    {
-
-        EventManager.ReceiveMovePath(CreateTilePath(targetTile, GameManager.Instance.activeUnit));
-    }
-
-
-
-
-    //Creates path of GridStat waypoints from newActiveUnit's occupied tile to targetTile
-    public List<GameObject> CreateTilePath(GridStats targetTile, Unit newActiveUnit) //Gamestate will determine what range to display
-    {
-        //newActiveUnit.gameObject.transform.position = newActiveUnit.occupiedTile.transform.position; //targetTile.transform.position;
-        
-        DisplayRange(newActiveUnit.occupiedTile, newActiveUnit.moveRange);
-
-        return SetPath(targetTile.x, targetTile.y, newActiveUnit.moveRange);
-    }
-
-    public void DisplayTileRange(GridStats targetTile, int type)
-    {
-        switch (type) {
-            case 0:
-                DisplayRange(targetTile, targetTile.unit.moveRange);
-                break;
-            case 1:
-                DisplayAttackRange(targetTile);
-                break;
-        }
-
-      
-    }
-
-   
-
-
-
-
-    
-   
-
-
-
-   
-
     private void Awake()
     {
-  
+
         gridArray = new GameObject[columns, rows];
 
 
@@ -84,8 +33,329 @@ public class GridBehavior : MonoBehaviour
     {
 
         GameManager.OnGameStateChanged += OnStateChange;
+        EventManager.SendFirstEnemyPos += FindTargetPath;
         // EventManager.SendGridLocation += GridLocationReceived;
     }
+
+
+    public void ReciveDisplayLocation(GridStats targetTile)
+    {
+
+        //EventManager.ReciveDisplayMovePath(CreateTilePath(targetTile, GameManager.Instance.activeUnit));
+
+        path = CreateTilePath(targetTile, GameManager.Instance.activeUnit);
+
+        EventManager.ReciveTileDisplayLine(path);
+    }
+
+    public void SendGridPath(GridStats targetTile)
+    {
+
+        EventManager.ReceiveMovePath(CreateTilePath(targetTile, GameManager.Instance.activeUnit));
+    }
+
+    //Targeted gridstat attempts to reach player location
+    public void FindTargetPath(GridStats targetTile)
+    {
+        //StartCoroutine(EnemyPathfindSteps(targetTile));   
+        StartCoroutine(EnemyMovementPath(targetTile));
+    }
+
+    //Path towards player is sent to EnemyPhase
+    private void SendTargetPath(List<GameObject> newPath)
+    {
+        //EventManager.ReciveTileDisplayLine(newPath);
+        path = newPath;
+
+        //EventManager.ReciveTileDisplayLine(newPath);
+
+        EventManager.ReciveTargetPath(newPath);
+
+    }
+
+
+
+
+
+
+
+    private IEnumerator EnemyMovementPath(GridStats targetTile)
+    {
+        int detectRange = GameManager.Instance.activeUnit.targetDetectRange;
+
+        int moveRange = GameManager.Instance.activeUnit.moveRange;
+
+        int weaponRange = GameManager.Instance.activeUnit.weaponRange;
+
+        yield return null;
+
+        List<GameObject> initPath = EnemyCreateTilePath(targetTile, GameManager.Instance.activeUnit, detectRange);
+
+        yield return null;
+
+        for (int i = 0; i < initPath.Count; i++)
+        {
+            initPath[i].GetComponent<GridStats>().arrowActive = false;
+            initPath[initPath.Count - 1 - i].GetComponent<GridStats>().position = 0;
+        }
+
+        yield return null;
+
+        List<GameObject> newPath = new List<GameObject>();
+
+        yield return null;
+
+        if (initPath.Count > moveRange)
+        {
+
+            print("Outside move range");
+            for (int i = 0; i <= moveRange; i++)
+            {
+                print(i);
+                newPath.Add(initPath[initPath.Count - 1 - i]);
+                initPath[initPath.Count - 1 - i].GetComponent<GridStats>().arrowActive = true;
+
+                initPath[initPath.Count - 1 - i].GetComponent<GridStats>().position = moveRange - i;
+
+                yield return null;
+            }
+
+        }
+        else
+        {
+            print("Inside move range");
+            for (int i = 0; i < initPath.Count; i++)
+            {
+                print(i);
+                newPath.Add(initPath[initPath.Count - 1 - i]);
+                initPath[initPath.Count - 1 - i].GetComponent<GridStats>().arrowActive = true;
+
+                initPath[initPath.Count - 1 - i].GetComponent<GridStats>().position = initPath.Count - 1 - i;
+
+                yield return null;
+            }
+        }
+
+        yield return null;
+
+        newPath.Reverse();
+
+        yield return null;
+
+        SendTargetPath(newPath);
+
+    }
+
+
+    public List<GridStats> EnemyFindTargetsInRange(GridStats startingTile, int range, bool attacking)
+    {
+        List<GridStats> AllUnitsInRange = new();
+
+        print("Search started at " +startingTile);
+
+        HoverInitialSetup(startingTile);
+
+        if (startingTile.unit != null)
+        {
+            HoverInitialSetup(startingTile);
+
+
+
+
+            Unit targetUnit = startingTile.unit.GetComponent<Unit>();
+
+            print(startingTile.unit.GetComponent<Unit>());
+
+
+            for (int step = 1; step < rows * columns; step++)
+            {
+                foreach (GameObject obj in gridArray)
+                {
+
+                    if (obj && obj.GetComponent<GridStats>().visited == step - 1)
+                    {
+                        TestFourDirections(obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y, step);
+
+                        if (obj.GetComponent<GridStats>().visited <= range)
+                        {
+                           
+                            if (obj.GetComponent<GridStats>().unit != null)
+                                if (obj.GetComponent<GridStats>().unit.unitType == UnitType.PlayerUnit)
+
+                                    if (attacking)
+                                    {
+                                        print("Found a " + obj.GetComponent<GridStats>().unit + " to attack");
+                                        AllUnitsInRange.Add(obj.GetComponent<GridStats>());
+                                    }
+                                    else
+                                    {
+                                        print(obj.GetComponent<GridStats>().unit);
+                                        AllUnitsInRange.Add(EnemyFindTargetInWeaponRange(obj.GetComponent<GridStats>(), range, targetUnit.weaponRange, obj.GetComponent<GridStats>().visited)); //obj.GetComponent<GridStats>());
+                                    }
+
+
+
+
+                        }
+
+
+
+                    }
+
+                }
+
+
+            }
+
+            //print(AllUnitsInRange);
+
+
+            return AllUnitsInRange;
+
+        }
+        else
+        {
+            print("nothing here");
+            return null;
+        }
+    }
+
+    public GridStats EnemyFindTargetInWeaponRange(GridStats target, int range, int weaponRange, int visitTarget)
+    {
+        List<GridStats> AllUnitsInRange = new();
+
+
+        GridStats finalTarget = null;
+
+        // for (int step = 1; step < rows * columns; step++)
+        {
+            foreach (GameObject obj in gridArray)
+            {
+
+                if (obj)
+                {
+                    // TestFourDirections(obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y, step);
+
+                    if (obj.GetComponent<GridStats>().visited == visitTarget - weaponRange)
+                    {
+                        print(visitTarget - weaponRange);
+                        if (obj.GetComponent<GridStats>().unit == null)
+                        {
+                            if (finalTarget != null)
+                            {
+
+                                if (Vector3.Distance(target.gameObject.transform.position, finalTarget.gameObject.transform.position) > Vector3.Distance(target.gameObject.transform.position, obj.transform.position))
+                                //if (((target.x + target.y)- (finalTarget.x + finalTarget.y)) >= ((target.x + target.y) - (obj.GetComponent<GridStats>().x + obj.GetComponent<GridStats>().y) ))
+                                {
+
+
+                                    print(((obj.GetComponent<GridStats>().x - obj.GetComponent<GridStats>().y) + (target.x - target.y)));
+                                    finalTarget = obj.GetComponent<GridStats>();
+                                }
+                            }
+                            else
+                            {
+
+                                print("Basic target = " + ((obj.GetComponent<GridStats>().x + obj.GetComponent<GridStats>().y) + (target.x + target.y)));
+                                finalTarget = obj.GetComponent<GridStats>();
+                            }
+                        }
+
+                        //AllUnitsInRange.Add(obj.GetComponent<GridStats>());
+
+                    }
+
+
+
+                }
+
+            }
+
+
+        }
+
+
+
+        return finalTarget;
+
+
+    }
+
+
+
+    public List<GameObject> EnemyCreateTilePath(GridStats targetTile, Unit newActiveUnit, int range) //Gamestate will determine what range to display
+    {
+        //newActiveUnit.gameObject.transform.position = newActiveUnit.occupiedTile.transform.position; //targetTile.transform.position;
+
+        EnemyRangeSetup(newActiveUnit.occupiedTile);
+
+        return SetPath(targetTile.x, targetTile.y, range);
+    }
+
+
+    //Creates path of GridStat waypoints from newActiveUnit's occupied tile to targetTile
+    public List<GameObject> CreateTilePath(GridStats targetTile, Unit newActiveUnit) //Gamestate will determine what range to display
+    {
+        //newActiveUnit.gameObject.transform.position = newActiveUnit.occupiedTile.transform.position; //targetTile.transform.position;
+        
+        //DisplayRange(newActiveUnit.occupiedTile, newActiveUnit.moveRange);
+
+        return SetPath(targetTile.x, targetTile.y, newActiveUnit.moveRange);
+    }
+
+    public void DisplayTileRange(GridStats targetTile, int type)
+    {
+        
+            if (!previewActive)
+            {
+          
+      
+                previewActive = true;
+                switch (type)
+                {
+                    case 0:
+                        StartCoroutine(DisplayRange(targetTile, targetTile.unit.moveRange));
+                        break;
+                    case 1:
+                        DisplayAttackRange(targetTile);
+                        break;
+                }
+
+            }
+        
+
+      
+    }
+
+    public void DisplayEnemyTileRange(GridStats targetTile, int type)
+    {
+        switch (type)
+        {
+            case 0:
+                DisplayRange(targetTile, targetTile.unit.moveRange);
+                break;
+            case 1:
+               // DisplayRange(targetTile, targetTile.unit.moveRange);
+                DisplayAttackRange(targetTile);
+                break;
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void OnStateChange(GameState newState)
     {
@@ -126,44 +396,47 @@ public class GridBehavior : MonoBehaviour
     }
 
     //Clears range when mouse leaves occupied tile
-    public void ClearGrid()
+    public void ClearGrid(List<GridStats> inputClearArray)  //IEnumerator
     {
-        if (gridArray.Length > 0)
+        //yield return new WaitUntil(() => !previewChangeState);
+
+        //StopCoroutine(DisplayRange(null, 0));
+
+      //  yield return null;
+        print("Clearing grid");
+        if (inputClearArray.Count > 0)
         {
             for (int step = 1; step < rows * columns; step++)
             {
-                foreach (GameObject obj in gridArray)
+                foreach (GridStats obj in inputClearArray)
                 {
-                    
+                    if(obj)
+                    {
                         obj.GetComponent<GridStats>().canMove = false;
                         obj.GetComponent<GridStats>().canAttack = false;
                         obj.GetComponent<GridStats>().arrowActive = false;
-                 
+                    }
                 }
+               
             }
         }
+       // yield return null;
     }
 
+   
 
-   public List<GridStats> EnemyFindTargetsInRange(GridStats startingTile)
+
+
+
+
+
+    void EnemyRangeSetup(GridStats hoverTarget)
     {
-        List<GridStats> AllUnitsInRange = new();
-
-        print(startingTile);
-
-        HoverInitialSetup(startingTile);
-
-        if (startingTile.unit != null)
+        if (hoverTarget.unit.GetComponent<Unit>())
         {
-            HoverInitialSetup(startingTile);
+            HoverInitialSetup(hoverTarget);
 
-
-
-
-            Unit targetUnit = startingTile.unit.GetComponent<Unit>();
-
-            print(startingTile.unit.GetComponent<Unit>());
-
+            Unit targetUnit = hoverTarget.unit.GetComponent<Unit>();
 
             for (int step = 1; step < rows * columns; step++)
             {
@@ -174,45 +447,30 @@ public class GridBehavior : MonoBehaviour
                     {
                         TestFourDirections(obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y, step);
 
-                        if (step <= targetUnit.targetDetectRange + 1)
+                        if (step <= (targetUnit.moveRange + targetUnit.weaponRange) + 1)
                         {
-                            if (obj.GetComponent<GridStats>().unit != null)
-                                if (obj.GetComponent<GridStats>().unit != startingTile.unit)
-                                {
-                                    AllUnitsInRange.Add(obj.GetComponent<GridStats>());
-                                }
-                                
+                            obj.GetComponent<GridStats>().inAttackRange = true;
+                            obj.GetComponent<GridStats>().canMove = false;
+                            obj.GetComponent<GridStats>().canAttack = true;
 
                         }
-
+                        else
+                        {
+                            obj.GetComponent<GridStats>().inAttackRange = true;
+                            obj.GetComponent<GridStats>().canMove = false;
+                            obj.GetComponent<GridStats>().canAttack = false;
+                        }
 
 
                     }
 
                 }
 
-
             }
-
-            //print(AllUnitsInRange);
-
-            for(int i = 0; i < AllUnitsInRange.Count; i++)
-            {
-                print(AllUnitsInRange[i].unit.gameObject.name);
-            }
-
-            return AllUnitsInRange;
-            
-        } else
-        {
-            print("nothing here");
-            return null;
         }
+
     }
 
-   
-
-   
 
 
     void DisplayAttackRange(GridStats hoverTarget)
@@ -256,53 +514,122 @@ public class GridBehavior : MonoBehaviour
         
     }
 
+
+
     //Displays range when an occupied tile is hovered over 
-    void DisplayRange(GridStats hoverTarget, int maxMove)
+    private IEnumerator DisplayRange(GridStats hoverTarget, int maxMove)
     {
+        List<GridStats> nearbyTiles = new List<GridStats>();
+
         if (hoverTarget.unit.GetComponent<Unit>())
         {
-            HoverInitialSetup(hoverTarget);
-
-            Unit targetUnit = hoverTarget.unit.GetComponent<Unit>(); 
-
-            for (int step = 1; step < rows * columns; step++)
+            if (hoverTarget.unit.unitType == UnitType.PlayerUnit)
             {
-                foreach (GameObject obj in gridArray)
+                HoverInitialSetup(hoverTarget);
+
+                Unit targetUnit = hoverTarget.unit.GetComponent<Unit>();
+
+                for (int step = 1; step < rows * columns; step++)
                 {
-
-                    if (obj && obj.GetComponent<GridStats>().visited == step - 1)
+                    foreach (GameObject obj in gridArray)
                     {
-                        TestFourDirections(obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y, step);
 
-                                if (step <= targetUnit.moveRange + 1)
+                        if (obj && obj.GetComponent<GridStats>().visited == step - 1)
+                        {
+                            TestFourDirections(obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y, step);
+
+                            if (step <= targetUnit.moveRange + 1)
+                            {
+
+                                obj.GetComponent<GridStats>().canMove = true;
+                                obj.GetComponent<GridStats>().canAttack = false;
+                                nearbyTiles.Add(obj.GetComponent<GridStats>());
+
+                            }
+                            else if (step <= (targetUnit.moveRange + targetUnit.weaponRange) + 1)
+                            {
+                                obj.GetComponent<GridStats>().canAttack = true;
+                                obj.GetComponent<GridStats>().canMove = false;
+                                nearbyTiles.Add(obj.GetComponent<GridStats>());
+                            }
+                            else
+                            {
+                                obj.GetComponent<GridStats>().canMove = false;
+                                obj.GetComponent<GridStats>().canAttack = false;
+                            }
+
+                            
+                        }
+                        
+
+                    }
+                    
+
+                }
+
+                hoverTarget.nearbyClearTiles = nearbyTiles;
+                previewChangeState = false;
+    
+                yield return null;
+
+                
+            }
+            else if (hoverTarget.unit.unitType == UnitType.EnemyUnit)
+            {
+                
+            
+                    HoverInitialSetup(hoverTarget);
+
+                    Unit targetUnit = hoverTarget.unit.GetComponent<Unit>();
+
+                    for (int step = 1; step < rows * columns; step++)
+                    {
+                        foreach (GameObject obj in gridArray)
+                        {
+
+                            if (obj && obj.GetComponent<GridStats>().visited == step - 1)
+                            {
+                                TestFourDirections(obj.GetComponent<GridStats>().x, obj.GetComponent<GridStats>().y, step);
+
+                                if (step <= (targetUnit.moveRange + targetUnit.weaponRange) + 1)
                                 {
 
-                                    obj.GetComponent<GridStats>().canMove = true;
-                                    obj.GetComponent<GridStats>().canAttack = false;
-
-                                }
-                                else if (step <= (targetUnit.moveRange + targetUnit.weaponRange) + 1)
-                                {
-                                    obj.GetComponent<GridStats>().canAttack = true;
                                     obj.GetComponent<GridStats>().canMove = false;
-                                }
+                                    obj.GetComponent<GridStats>().canAttack = true;
+                                    nearbyTiles.Add(obj.GetComponent<GridStats>());
+
+                            }
                                 else
                                 {
                                     obj.GetComponent<GridStats>().canMove = false;
                                     obj.GetComponent<GridStats>().canAttack = false;
                                 }
 
+
+                            }
                         
+
+
                     }
 
-                }
+                    hoverTarget.nearbyClearTiles = nearbyTiles;
+                    previewChangeState = false;
 
-            }
-        } else
-        {
-            //Make it all red for enemies
+                    //yield return null;
+                }
+                }
+            
         }
+
+        yield return null;
+
+        /*hoverTarget.nearbyClearTiles = nearbyTiles;
+        previewChangeState = false;
+        print("Grid Can Change");*/
+        yield return null;
     }
+
+    
 
     
 

@@ -16,15 +16,16 @@ public class BuildRobo : MonoBehaviour
 
     public MenuButtons menu;
 
+  
     // Start is called before the first frame update
     void Start()
     {
         //StartCoroutine(placeParts(parts));
     }
 
-    public void InitialPartsSetup(List<GameObject> p)
+    public void InitialPartsSetup(List<GameObject> p, Unit newOwnerUnit)
     {
-        StartCoroutine(placeParts(p));
+        StartCoroutine(placeParts(p, newOwnerUnit));
     }
 
     // Update is called once per frame
@@ -39,10 +40,10 @@ public class BuildRobo : MonoBehaviour
 
             StartCoroutine(placeParts(parts));
         }*/
-        if(displayMech)
+        /*if(displayMech)
         {
             StartCoroutine(placeParts(menu.parts));
-        }
+        }*/
 
         
 
@@ -50,7 +51,7 @@ public class BuildRobo : MonoBehaviour
     }
 
 
-    IEnumerator placeParts(List<GameObject> p)
+    IEnumerator placeParts(List<GameObject> p, Unit ownerUnit)
     {
         Destroy(legs);
         GameObject newPart = null;
@@ -58,6 +59,7 @@ public class BuildRobo : MonoBehaviour
             Destroy(legs);
             newPart = Instantiate(p[0], this.gameObject.transform);
             newPart.transform.localPosition = Vector3.zero;
+            newPart.transform.parent = ownerUnit.gameObject.transform;
             legs = newPart;
             //UILayer(legs);
 
@@ -66,6 +68,7 @@ public class BuildRobo : MonoBehaviour
             Destroy(body);
             newPart = Instantiate(p[1], legs.GetComponent<Legs>().bodyPoint.transform);
             newPart.transform.localPosition = Vector3.zero;
+            newPart.transform.parent = ownerUnit.gameObject.transform;
             body = newPart;
             //UILayer(body);
 
@@ -73,11 +76,12 @@ public class BuildRobo : MonoBehaviour
             Destroy(arms);
             newPart = Instantiate(p[2], body.GetComponent<Torso>().armPoint.transform);
             newPart.transform.localPosition = Vector3.zero;
+            newPart.transform.parent = ownerUnit.gameObject.transform;
             arms = newPart;
             //UILayer(arms);
             yield return null;
 
-            
+            ownerUnit.PartStatValues();
     }
 
 

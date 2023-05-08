@@ -30,11 +30,75 @@ public class EventManager : MonoBehaviour
     //Send location to attack from gridBehavior to current Phase
     public static event Action<GridStats> SendAttackLocation;
 
+
+    public static event Action<List<GameObject>> SendTargetPath;
+
+
+    public static event Action<GridStats> SendFirstEnemyPos;
+
+    //Combat or PlayerActionMenu report to PlayerPhase that a unit's turn has ended 
+    public static event Action SendEndPlayerTurn;
+
+    
+
     public static event Action SendClearGrid;
 
-    
 
-    
+
+
+    public static event Action<Unit, Unit> SendCombatStartRequest;
+
+
+    public static event Action<List<Unit>> SendEnemyUnitList;
+
+    public static event Action<List<Unit>> SendPlayerUnitList;
+
+    public static event Action<int, Unit> SendPopUpStatus;
+
+    public static event Action<Transform, Unit> SendHealthBarPos;
+
+    public static event Action<bool> SendCamLock;
+
+    public static void ReciveCamLock(bool status)
+    {
+        SendCamLock(status);
+    }
+
+
+    public static void ReciveHealthBarPos(Transform newHealthPos, Unit newOwner)
+    {
+        SendHealthBarPos(newHealthPos, newOwner);
+    }
+
+    public static void ReciveEnemyUnitList(List<Unit> EnemyList) {
+        SendEnemyUnitList(EnemyList);
+    }
+
+    public static void RecivePlayerUnitList(List<Unit> PlayerList) {
+        SendPlayerUnitList(PlayerList);
+    }
+
+
+    public static void RecieveCombatStartRequest(Unit attacker, Unit defender)
+    {
+        SendCombatStartRequest(attacker, defender);
+    }
+
+
+    public static void RecieveEndPlayerTurn()
+    {
+        SendEndPlayerTurn();
+    }
+
+    public static void ReciveTileDisplayLine(List<GameObject> newDisplayLine)
+    {
+      //  SendTileDisplayLine(newDisplayLine);
+    }
+
+    public static void ReceivePopUpStatus(int newPopUpStatus, Unit popUpUnit) {
+        SendPopUpStatus(newPopUpStatus, popUpUnit);
+    }
+
 
 
 
@@ -53,6 +117,9 @@ public class EventManager : MonoBehaviour
         {
             SendClearGrid?.Invoke();
         }
+
+
+
 
 
     //Player Movement and Action Events 
@@ -94,6 +161,18 @@ public class EventManager : MonoBehaviour
             SendAttackLocation?.Invoke(targetTile);
         }
 
+
+    //Enemy Movement and Action Events
+        
+        public static void ReciveFirstEnemyPos(GridStats newTarget)
+        {
+            SendFirstEnemyPos(newTarget);
+        }
+
+        public static void ReciveTargetPath(List<GameObject> newTargetPath)
+        {
+            SendTargetPath(newTargetPath);
+        }
 
 
 }

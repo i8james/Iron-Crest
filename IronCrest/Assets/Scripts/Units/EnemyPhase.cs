@@ -4,15 +4,53 @@ using UnityEngine;
 
 public class EnemyPhase : MonoBehaviour
 {
-    public UnitEnemy[] units;
+    //public UnitEnemy[] units;
+    public List<Unit> units;
+
     public bool[] unitStatus;
 
     public GameState State;
 
+
+
+    //UnitTurnCycle has sent a new active enemy unit for GameManager
+    private void EnemySelect()
+    {
+
+    }
+
+    //GridBehavior FindTargetPath has sent a new GameState request
+    private void EnemyTargetSelect()
+    {
+
+    }
+
+    //UnitMovement has sent a new GameState request
+    private void EnemyMove()
+    {
+
+    }
+
+    //UnitEnemy has sent a new Enemy Selection request
+    private void EnemyAction()
+    {
+
+    }
+
+
+
+
+
     private void Start()
     {
         GameManager.OnGameStateChanged += OnGameStateChange;
-        EventManager.SendMovePath += ReciveTilePath;
+        EventManager.SendTargetPath += ReciveTilePath;
+        EventManager.SendEnemyUnitList += ReciveEnemyUnits;
+    }
+
+    private void ReciveEnemyUnits(List<Unit> newEnemyList) 
+    {
+        units = newEnemyList;
     }
 
 
@@ -27,21 +65,32 @@ public class EnemyPhase : MonoBehaviour
         {
             EnemySelectTarget();
         }
+        else if (newState == GameState.EnemyAction)
+        {
+            GameManager.Instance.activeUnit.BeginAttack();
+        }
     }
 
     private void UnitTurnCycle()
     {
+        bool allEnemiesDead = true;
         bool isEnemyTurnOver = true;
-        for(int i = 0; i < units.Length; i++)
+        for(int i = 0; i < units.Count; i++)
         {
-            if(!units[i].acted)
-            {
-                isEnemyTurnOver = false;
-                GameManager.Instance.NewGameState(GameState.EnemyMove, units[i]);
-                break;
+            if(units[i] != null) {
+                allEnemiesDead = false;
+                if(!units[i].acted)
+                {
+                    isEnemyTurnOver = false;
+                    GameManager.Instance.NewGameState(GameState.EnemyMove, units[i]);
+                    break;
+                }
             }
         }
-        if(isEnemyTurnOver)
+        if(allEnemiesDead)
+        {
+            GameManager.Instance.NewGameState(GameState.StageComplete, null);
+        } else if(isEnemyTurnOver)
         {
             ResetActed();
             GameManager.Instance.NewGameState(GameState.PlayerSelect, null);
@@ -56,7 +105,7 @@ public class EnemyPhase : MonoBehaviour
 
     private void ResetActed()
     {
-        for (int i = 0;i < units.Length;i++)
+        for (int i = 0;i < units.Count;i++)
         {
             units[i].acted = false;
         }
@@ -75,6 +124,9 @@ public class EnemyPhase : MonoBehaviour
 
         }
     }
+
+
+
 
 
 

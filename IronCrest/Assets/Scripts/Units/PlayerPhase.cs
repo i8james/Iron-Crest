@@ -7,11 +7,63 @@ public class PlayerPhase : MonoBehaviour
     //public TurnCycle turns;
 
     //public int turnNum = 0;
-    public Unit[] units;
+    //public Unit[] units;
+    public List<Unit> units;
+
     public bool[] unitStatus;
 
     public GameState State;
 
+
+    //GameState returns
+
+
+    //Sets local unit list to unitSpawner's player unit list
+    private void PlayerSpawn(List<Unit> newUnits)
+    {
+        units = newUnits;
+    }
+
+    private void PlayerSelectRequest()
+    {
+
+    }
+
+    //newActiveUnitRequest in this script has gone through and is ready to be passed to game manager
+    private void PlayerSelect()
+    {
+
+    }
+
+    //OnMouseDown in GridStats has sent a new GameState which is ready to be passed to game manager
+    private void PlayerMoveSelect()
+    {
+
+    }
+
+    //TraversePath in UnitMovement has sent a new GameState request, CheckSwitchState will determine if PlayerPhase should end
+    private void PlayerMove()
+    {
+        
+            CheckSwitchState();
+            
+    }
+
+    //PlayerActionMenu has sent a GameState which is ready to be passed to game manager 
+    private void PlayerMenu(GameState newGameState)
+    {
+
+    }
+
+    //OnMouseDown in GridStats has sent a Combat GameState request
+    private void PlayerAction()
+    {
+        
+    }
+
+
+
+    //Functions
 
    
     private void Update()
@@ -21,6 +73,7 @@ public class PlayerPhase : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
+                GameManager.Instance.activeUnit.PartStatValues();//.acted = false;
                 GameManager.Instance.NewGameState(GameState.PlayerSelect, null);
             }
         }
@@ -30,13 +83,16 @@ public class PlayerPhase : MonoBehaviour
     //Check each unit to see if they have acted
     private bool CheckRoundOver()
     {
-        for(int i = 0; i < units.Length; i++)
+        for(int i = 0; i < units.Count; i++)
         {
-            if(!units[i].acted)
+            if (units[i] != null)
             {
-                //Current turn does not end
-                return false;
-                
+                if (!units[i].acted)
+                {
+                    //Current turn does not end
+                    return false;
+
+                }
             }
         }
         //Current turn ends
@@ -50,11 +106,17 @@ public class PlayerPhase : MonoBehaviour
 
         State = newState; //Local state variable is set to a new state 
 
-        //If the state switches to player select, check if the round is over
-        if(newState == GameState.PlayerSelect)
+        /*if (newState == GameState.PlayerSelect)
         {
-            CheckSwitchState();
-        } 
+            //CheckSwitchState();
+        }*/
+        //If the state switches to player select, check if the round is over
+        
+    }
+
+    private void ReciveEndPlayerTurn()
+    {
+        CheckSwitchState();
     }
 
 
@@ -64,14 +126,17 @@ public class PlayerPhase : MonoBehaviour
         if(CheckRoundOver())
         {
 
-            for (int i = 0; i < units.Length; i++)
+            for (int i = 0; i < units.Count; i++)
             {
-                units[i].acted = false;
-                print("New Round");
+                units[i].PartStatValues();
+                //units[i].acted = false; 
+    
             }
-            //GameManager.Instance.NewGameState(GameState.EnemySelect, null);
+            GameManager.Instance.NewGameState(GameState.EnemySelect, null);
+        } else
+        {
             GameManager.Instance.NewGameState(GameState.PlayerSelect, null);
-        } 
+        }
     }
 
 
@@ -82,6 +147,8 @@ public class PlayerPhase : MonoBehaviour
         EventManager.SendNewActiveUnitRequest += newActiveUnitRequest;
         EventManager.SendMovePath += ReciveTilePath;
         GameManager.OnGameStateChanged += OnGameStateChanged;
+        EventManager.SendEndPlayerTurn += ReciveEndPlayerTurn;
+        EventManager.SendPlayerUnitList += PlayerSpawn;
     }
 
     //Receive movement path and begin to move across it
@@ -105,6 +172,8 @@ public class PlayerPhase : MonoBehaviour
     private void newActiveUnitRequest(GridStats newUnitRequest)
     {
         newUnitRequest.unit.initTile = newUnitRequest;
+        newUnitRequest.unit.initRotation = newUnitRequest.unit.gameObject.transform.rotation;
+
         GameManager.Instance.NewGameState(GameState.PlayerMove, newUnitRequest.unit);
 
 

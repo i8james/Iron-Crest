@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public int maxHealth;
     public int health;
     public int attack;
+    public int might;
+    public int dex;
     public int defense;
     public int ac;
     public int crit;
@@ -15,7 +18,14 @@ public class Unit : MonoBehaviour
     public int moveRange;
     public int weaponRange;
 
+    public int rWeaponRange;
+
+    public int lWeaponRange;
+
+
     public GridStats initTile;
+
+    public Quaternion initRotation;
 
     public GridStats occupiedTile;
 
@@ -23,6 +33,8 @@ public class Unit : MonoBehaviour
     public UnitMovement movement;
 
     public BuildRobo builder;
+
+    public PartBuilder build2;
 
     public GameObject selection;
 
@@ -32,11 +44,37 @@ public class Unit : MonoBehaviour
 
     public List<GameObject> parts = new List<GameObject>();
 
+    public GameObject partPosBase;
+
+    public UnitType unitType;
+
+    public Transform healthBarPoint;
+
+    public Weapon activeWeapon;
+
+    public GameObject torso;
+
+    public List<GameObject> activeParts = new List<GameObject>();
+
+    public bool partSelector;
 
 
-
+    public void Explode()
+    {
+        //torso.GetComponent<Torso>().Explode();
+        StartCoroutine(Explosion());
+       // torso.GetComponent<Torso>().Explode2(activeParts[Random.Range(0, activeParts.Count)]);
+    }
     
-
+    private IEnumerator Explosion()
+    {
+        GameObject exp = Instantiate(torso.GetComponent<Torso>().smallExplosion, torso.transform);
+        exp.transform.localScale = Vector3.one * 0.35f;
+        exp.transform.position = activeParts[Random.Range(0, activeParts.Count)].transform.position; //torso.transform.position;
+        //exp.transform.position = Vector3.zero;
+        yield return new WaitForSeconds(1f);
+        Destroy(exp);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -55,10 +93,43 @@ public class Unit : MonoBehaviour
         //occupiedTile.unit = this;
         //transform.position = occupiedTile.transform.position;
 
+        //PartStatValues();
+
+        //Subscribe to events
+
         
     }
 
+    public virtual void Death() {
 
+    }
+
+    public void PickWeapon(LeftOrRight choice)
+    {
+        switch(choice)
+        {
+            case LeftOrRight.Left:
+                activeWeapon = build2.lWeapon.GetComponent<Weapon>();
+                activeWeapon.EquipAddToOwner(this);
+                
+                break;
+            case LeftOrRight.Right:
+                activeWeapon = build2.rWeapon.GetComponent<Weapon>();
+                activeWeapon.EquipAddToOwner(this);
+                break;
+        }
+
+        GameManager.Instance.NewGameState(GameState.PlayerAction, GameManager.Instance.activeUnit);
+    }
+
+
+    
+
+
+    public virtual void CallCombat() {
+
+       
+    }
     
     public virtual void FindTarget()
     {
@@ -72,12 +143,18 @@ public class Unit : MonoBehaviour
     }
 
 
+    public virtual void BeginAttack()
+    {
+
+    }
+
     public void CancelMovement()
     {
 
         occupiedTile.unit = null;
         occupiedTile = initTile;
         initTile.unit = this;
+        gameObject.transform.rotation = initRotation;
         gameObject.transform.position = initTile.transform.position;
         GameManager.Instance.NewGameState(GameState.PlayerMove, this);
     }
@@ -86,17 +163,82 @@ public class Unit : MonoBehaviour
 
     private void Awake()
     {
+        //
+        if (!partSelector)
+        {
+          //  GameManager.OnGameStateChanged += Spawn;
+        }
+    }
 
-        //Subscribe to events
-        
+
+
+    private void Spawn(GameState newGameState)
+    {
+        if (newGameState == GameState.PlayerSpawn)
+        {
+            StartCoroutine(PartStart());
+        }
+    }
+
+    private IEnumerator PartStart()
+    {
         movement = gameObject.AddComponent<UnitMovement>();
+
+        yield return null;
+
+        build2 = unitHolder.AddComponent<PartBuilder>();
+        build2.partPosBase = partPosBase;
+        build2.parts = parts;
+
+        yield return null;
+
+        build2.InitialPartsSetup(parts, this);
+
+        yield return null;
+
+        EventManager.ReciveHealthBarPos(healthBarPoint, this);
+    }
+
+    
+
+
+    public void PartStatValues()
+    {
+        
+        /*
+          Torso torso = GetComponentInChildren<Torso>();
+          Legs legs = GetComponentInChildren<Legs>();
+          Head head = GetComponentInChildren<Head>();
+          health = torso.health;
         
 
-        //Build body
-        builder = unitHolder.AddComponent<BuildRobo>();
-        builder.parts = parts;
-        builder.InitialPartsSetup(parts);
+          attack = torso.attack;
+          defense = torso.defense;
+          ac = torso.ac + legs.ac;
+          //crit = head.crit;
+          move = legs.move;*/ 
+          if(rWeaponRange >= lWeaponRange)
+        {
+            weaponRange = rWeaponRange;
+        } else
+        {
+            weaponRange = lWeaponRange;
+        }
+        
+          acted = false;
 
+        //occupiedTile.unit = this;
+        //transform.position = occupiedTile.transform.position;
+    }
+
+    public virtual void EnemyWeaponSelect(Weapon newWeapon)
+    {
+
+    }
+
+    public void setHealth()
+    {
+        maxHealth = health;
     }
 
     //Update occupied tile
@@ -109,9 +251,9 @@ public class Unit : MonoBehaviour
 
     }
 
-    public void BeginMovement(List<GameObject> tilePath)
+    public virtual void BeginMovement(List<GameObject> tilePath)
     {
-
+        
     }
 
     
@@ -153,4 +295,12 @@ public class Unit : MonoBehaviour
 
     
 
+}
+
+
+public enum UnitType
+{
+    PlayerUnit,
+    EnemyUnit,
+    AllyUnits
 }

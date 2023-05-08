@@ -15,56 +15,139 @@ public class UnitEnemy : Unit
         
     }
 
-   
+    public override void EnemyWeaponSelect(Weapon newWeapon)
+    {
+        activeWeapon = newWeapon;
+    }
 
+
+
+    public override void Death()
+    {
+        Destroy(gameObject);
+        EventManager.RecieveEndPlayerTurn();
+
+    }
 
 
 
     public override void FindTarget()
     {
-        StartCoroutine(FinalTargetSelect(ChooseTarget(occupiedTile.SetTarget())));
+        StartCoroutine(FinalTargetSelect());
 
     }
 
-    private IEnumerator FinalTargetSelect(GridStats target)
+    private IEnumerator FinalTargetSelect()
     {
-        List<GameObject> pathToTarget = target.owner.CreateTilePath(target, this);
+        GridStats target = ChooseTarget(occupiedTile.SetTarget());
 
-        yield return pathToTarget;
-
-        if(pathToTarget.Count <= moveRange)
-        {
-            print("Moving withing range");
-            for(int i = 0; i < pathToTarget.Count; i++)
-            {
-                print(pathToTarget[i].name);
-            }
-            pathToTarget[weaponRange - 1].GetComponent<GridStats>().owner.SendGridPath(pathToTarget[weaponRange - 1].GetComponent<GridStats>());
         
+
+     
+        yield return null;
+
+        if(target) {
+           //print("My target is " + target.unit.name);
+
+               if (target.visited < weaponRange)
+                {
+                GameManager.Instance.NewGameState(GameState.EnemyAction, this);
+            }
+            /* else
+             {
+         if (target.unit == this)
+         {
+             GameManager.Instance.NewGameState(GameState.EnemyAction, this);
+         }*/
+            else
+            {
+                EventManager.ReciveFirstEnemyPos(target);
+            }
+          //  }
+            
+
         } else
         {
-            pathToTarget[(pathToTarget.Count - 1) - moveRange].GetComponent<GridStats>().owner.SendGridPath(pathToTarget[(pathToTarget.Count - 1) - moveRange].GetComponent<GridStats>());
+            print("Enemy waited");
+            acted = true;
+            GameManager.Instance.NewGameState(GameState.EnemySelect, null); 
+            
         }
+
+
+
+        
+        
+       
+    }
+
+
+    public override void BeginAttack()
+    {
+        
+        StartCoroutine(AttackTargetSelect());
+    }
+
+
+    private IEnumerator AttackTargetSelect()
+    {
+        //occupiedTile.owner.DisplayEnemyTileRange(occupiedTile, 1);
+
+        GridStats target = ChooseTarget(occupiedTile.SetAttackTarget());
+
+        print("Enemy Attack phase");
+
+        acted=true;
+
+        yield return null;
+
+        if (target)
+        {
+            print("Attacking " + target.unit.name);
+
+            target.unit.CallCombat();
+
+        }
+        else
+        {
+            print("Enemy did not attack");
+            acted = true;
+            GameManager.Instance.NewGameState(GameState.EnemySelect, null);
+        }
+
+        yield return null;
+
+        //GameManager.Instance.NewGameState(GameState.EnemySelect, null);
+
+
+
+
+    }
+
+
+    public override void CallCombat()
+    {
+
+        EventManager.RecieveCombatStartRequest(GameManager.Instance.activeUnit, this);
+
     }
 
 
 
-
-    
 
     private GridStats ChooseTarget(List<GridStats> allTargets)
     {
-        if (allTargets.Count > 0)
+        if (allTargets.Count > 0 && allTargets != null)
         {
-            switch (enemyType)
-            {
-                case 0:
+          ///  switch (enemyType)
+            //{
+              //  case 0:
                     return FindClosestUnit(allTargets);
 
-                default:
-                    return null;
+              //  default:
+                   // return null;
 
-            }
+           // }
         } else
         {
             return null;
@@ -81,22 +164,35 @@ public class UnitEnemy : Unit
 
     private GridStats FindClosestUnit(List<GridStats> allTargets)
     {
+        
+
         GridStats currentClosest = allTargets[0];
 
-        for(int i = 0; i < allTargets.Count; i++)
+        print(currentClosest);
+
+        if (allTargets.Count > 1 && currentClosest != null)
         {
-            
-            if (allTargets[i].x + allTargets[i].y < currentClosest.x + currentClosest.y)
+
+            for (int i = 1; i < allTargets.Count; i++)
             {
-                currentClosest = allTargets[i];
+                if (allTargets[i] != null)
+                {
+
+                    if (allTargets[i].visited < currentClosest.visited)
+                    {
+                        currentClosest = allTargets[i];
+                    }
+                }
             }
         }
 
+
+     
         return currentClosest;
 
     }
 
-    public new void BeginMovement(List<GameObject> tilePath)
+    public override void BeginMovement(List<GameObject> tilePath)
     {
         print("Starting movement");
         movement.BeginEnemyMove(tilePath);

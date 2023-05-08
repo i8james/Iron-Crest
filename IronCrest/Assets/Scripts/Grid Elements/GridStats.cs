@@ -61,6 +61,8 @@ public class GridStats : MonoBehaviour
 
     private GameState gameState;
 
+    public List<GridStats> nearbyClearTiles;
+
     private void Awake()
     {
         
@@ -70,6 +72,7 @@ public class GridStats : MonoBehaviour
     void Start()
     {
         //unit = null;
+        nearbyClearTiles = null;
         rangeActive = false;
         gameState = GameState.PlayerSelect;
 
@@ -100,14 +103,12 @@ public class GridStats : MonoBehaviour
 
         
         GameManager.OnGameStateChanged += UpdateGameState;
-        EventManager.SendClearGrid += ClearGrid;
+        //EventManager.SendClearGrid += ClearGrid;
+        //EventManager.SendTileDisplayLine += ShowLine;
+        //EventManager.SendTargetPath += ShowLine;
     }
 
-        private void ClearGrid()
-        {
-            owner.ClearGrid();
-        }
-
+     
       
         private void ShowLine(List<GameObject> points)
         {
@@ -120,8 +121,7 @@ public class GridStats : MonoBehaviour
 
                 GridStats previous = findP(points);
                 GridStats next = findN(points);
-                //bend.transform.rotation = bendRotation;
-                //owner.path.Count - 
+              
                 arrow.SetActive(false);
                 arrow2.SetActive(false);
                 arrow3.SetActive(false);
@@ -283,12 +283,18 @@ public class GridStats : MonoBehaviour
     {
         GridStats next;
 
-        if (position > 0)
+        if (position > 0 && points != null && position < points.Count)
         {
-            if (points[position - 1].GetComponent<GridStats>() != null)
+            if (points[position - 1] != null)
             {
-                next = points[position - 1].GetComponent<GridStats>();
-                return next;
+                if (points[position - 1].GetComponent<GridStats>() != null)
+                {
+                    next = points[position - 1].GetComponent<GridStats>();
+                    return next;
+                } else
+                {
+                    return null;
+                }
             }
             else
             {
@@ -352,20 +358,37 @@ public class GridStats : MonoBehaviour
 
     private void UpdateGameState(GameState newState)
     {
-        if (newState == GameState.PlayerSelect)
+        if (newState == GameState.PlayerSelect || newState == GameState.EnemySelect)
         {
+            if (rangeActive)
+            {
+               
+
+                      //  StartCoroutine(owner.ClearGrid(nearbyClearTiles));
+                owner.ClearGrid(nearbyClearTiles);
+
+                //owner.ClearGrid();
+                rangeActive = false;
+                canMove = false;
+            }
             canMove = false;
             canAttack = false;
-            ClearTile();
+            if (arrowActive)
+            {
+                ClearTile();
+            }
         }
         else if (newState == GameState.PlayerAction)
         {
-            ClearTile();
+            if (arrowActive)
+            {
+                ClearTile();
+            }
             if (GameManager.Instance.activeUnit == unit)
             {
                 owner.DisplayTileRange(this, 1);
             }
-        }
+        } 
 
 
         gameState = newState;
@@ -376,6 +399,9 @@ public class GridStats : MonoBehaviour
     {
         if (owner != null)
         {
+            arrowActive = false;
+
+            print("Clearing tile");
             owner.path.Clear();
 
             arrow.SetActive(false);
@@ -394,13 +420,26 @@ public class GridStats : MonoBehaviour
         }
     }
     
-    //Returns every unit within range
+    //Returns every unit within movement targeting range
     public List<GridStats> SetTarget()
     {
-        return owner.EnemyFindTargetsInRange(this);
+        return owner.EnemyFindTargetsInRange(this, unit.targetDetectRange, false);
     }
 
+
+    //Returns every unit withing weapon range
+    public List<GridStats> SetAttackTarget()
+    {
+        print("Setting attack target within " + unit.rWeaponRange);
+        return owner.EnemyFindTargetsInRange(this, unit.rWeaponRange, true);
+    }
     
+
+    //UnitEnemy calls GridBehavior to creat a path to this location
+    public void EnemyTargetThisLocation()
+    {
+        owner.FindTargetPath(this);
+    }
 
 
 
@@ -408,16 +447,23 @@ public class GridStats : MonoBehaviour
     {
         //createEventLinks();
         //Gamestate player selection
+
+        
         selected.SetActive(true);
 
         if (gameState == GameState.PlayerSelect)
         {
             if (unit != null)
             {
+                EventManager.ReceivePopUpStatus(0, unit);
                 if (!unit.acted)
                 {
+
                     //print("Display range");
-                    owner.DisplayTileRange(this, 0);
+
+                  
+                        owner.DisplayTileRange(this, 0);
+                    
                     //Show move range
                     rangeActive = true;
                 }
@@ -428,13 +474,20 @@ public class GridStats : MonoBehaviour
         //Gamestate Player Movement
         if(gameState == GameState.PlayerMove)
         {
-            if(unit == null)
-            {   
-                
-                
+            if (unit == null)
+            {
+
+
                 owner.ReciveDisplayLocation(this);
 
                 //Show path
+            }
+            else if (unit == GameManager.Instance.activeUnit)
+            {
+                for(int i = 0; i < owner.path.Count; i++)
+                {
+                    owner.path[i].GetComponent<GridStats>().arrowActive = false;
+                }
             }
         }
 
@@ -454,18 +507,31 @@ public class GridStats : MonoBehaviour
             {
                 if (!unit.acted)
                 {
-                    EventManager.ReceiveNewActiveUnitRequest(this);
+                    if (unit.unitType == UnitType.PlayerUnit)
+                    {
+                        EventManager.ReceiveNewActiveUnitRequest(this);
+                    }
+
                 }
             }
         } else if (gameState == GameState.PlayerMove)
         {
             if (unit == null)
             {
-                Unit activeUnit = GameManager.Instance.activeUnit;
-                GameManager.Instance.NewGameState(GameState.PlayerMoveSelect, activeUnit);
-                owner.SendGridPath(this);
-
+                if (canMove)
+                {
+                    
+                    Unit activeUnit = GameManager.Instance.activeUnit;
+                    GameManager.Instance.NewGameState(GameState.PlayerMoveSelect, activeUnit);
+                    owner.SendGridPath(this);
+                    EventManager.ReceivePopUpStatus(1, null);
+                }
                 //Begin movement on path
+            }
+            else if (unit == GameManager.Instance.activeUnit)
+            {
+                unit.acted = true;
+                GameManager.Instance.NewGameState(GameState.PlayerMenu, GameManager.Instance.activeUnit);
             }
         }
 
@@ -473,8 +539,30 @@ public class GridStats : MonoBehaviour
         {
             if(inAttackRange)
             {
-                print(this);
-                GameManager.Instance.NewGameState(GameState.PlayerSelect, null);
+                {
+                    if (unit != null)
+                    {
+                        if (unit.unitType == UnitType.EnemyUnit)
+                        {
+                            print("Attacking this space!");
+                            //if(unit.ReturnType() == 2) 
+                            //{
+                            print(this.unit.gameObject.name);
+                            unit.CallCombat();
+                            //EventManager.RecieveCombatStartRequest(GameManager.Instance.activeUnit, this.unit);
+                            //}
+                            //EventManager.RecieveEndPlayerTurn();
+                        }
+                        else
+                        {
+                            EventManager.RecieveEndPlayerTurn();
+                        }
+                    } else
+                    {
+                        GameManager.Instance.NewGameState(GameState.PlayerMenu, GameManager.Instance.activeUnit);
+                        //EventManager.RecieveEndPlayerTurn();
+                    }
+                }
             }
         }
 
@@ -486,14 +574,26 @@ public class GridStats : MonoBehaviour
 
     private void OnMouseExit()
     {
+        owner.previewActive = false;
         selected.SetActive(false);
         //removeEventLinks();
         //selected.SetActive(false);
         //clear grid
+      
         if (rangeActive)
         {
-            owner.ClearGrid();
+            if (gameState == GameState.PlayerSelect)
+            {
+                if (nearbyClearTiles != null)
+                {
+
+                    // StartCoroutine(owner.ClearGrid(nearbyClearTiles));
+                    owner.ClearGrid(nearbyClearTiles);
+                }
+            }
+            //owner.ClearGrid();
             rangeActive = false;
+            EventManager.ReceivePopUpStatus(1, null);
         }
     }
 }
