@@ -167,11 +167,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9ceeeab31be10645999cc6eef9c5280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unit1Image: {fileID: 2107808681}
-  Unit2Image: {fileID: 760644299}
-  Unit3Image: {fileID: 366292244}
-  Unit4Image: {fileID: 1379608449}
-  SelectedUnitImage: {fileID: 2049888182}
+  Unit1UI: {fileID: 2107808681}
+  Unit2UI: {fileID: 760644299}
+  Unit3UI: {fileID: 366292244}
+  Unit4UI: {fileID: 1379608449}
+  CurrentUnitImage: {fileID: 2049888182}
+  SelectedUnitsImage: {fileID: 0}
+  HealthText: {fileID: 18309561}
+  CurrentUnitHealth: 0
+  CurrentUnitMaxHealth: 0
+  SpeedText: {fileID: 1343799258}
+  CurrentUnitSpeed: 0
+  W1NameField: {fileID: 849975936}
+  Weapon1Name: No Weapon Equiped
+  W1Attack: {fileID: 517692652}
+  W1AttackValue: 0
+  W1Range: {fileID: 118874674}
+  W1RangeValue: 0
+  W2NameField: {fileID: 1547744405}
+  Weapon2Name: No Weapon Equiped
+  W2Attack: {fileID: 1404339600}
+  W2AttackValue: 0
+  W2Range: {fileID: 391555537}
+  W2RangeValue: 0
 --- !u!1 &18309559
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +543,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 264368788}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4367461}
+        m_TargetAssemblyTypeName: UIManagement, Assembly-CSharp
+        m_MethodName: iHaveBeenSelectedUnit2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &264368788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1612,7 +1642,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1273144325}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4367461}
+        m_TargetAssemblyTypeName: UIManagement, Assembly-CSharp
+        m_MethodName: iHaveBeenSelectedUnit3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1273144325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1945,7 +1987,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1391334100}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4367461}
+        m_TargetAssemblyTypeName: UIManagement, Assembly-CSharp
+        m_MethodName: iHaveBeenSelectedUnit4
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1391334100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2339,7 +2393,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1568950579}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4367461}
+        m_TargetAssemblyTypeName: UIManagement, Assembly-CSharp
+        m_MethodName: iHaveBeenSelectedUnit1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1568950579
 MonoBehaviour:
   m_ObjectHideFlags: 0
